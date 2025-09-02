@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ee8f8468-a469-4c76-b537-7963ef693aa6" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="AnnotationType" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/3.3.4/spring-data-commons-3.3.4.jar!/org/springframework/data/domain/Page.class" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2sxhvTd6ElPTAXUwIwgaQKmqmvC" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Docker.docker-compose.yaml.db: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yaml.redis_cache: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ClickerApiApplicationTests.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.clicker-backend [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.clicker-backend [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.web-clicker-backend [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.web-clicker-backend [install].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.ClickerApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/sayner/github_repos/clicker-backend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.import&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;redis&quot;,
+      &quot;postgresql&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.example.clicker.user" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/example/clicker/user" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/example/clicker/messaging/deprecated" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.example.clicker.wallets" />
+      <recent name="com.example.clicker.user" />
+      <recent name="com.example.clicker.security.core" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.clicker.messaging.deprecated" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.ClickerApplication">
+    <configuration name="ClickerApiApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="clicker-backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.clicker.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.clicker" />
+      <option name="MAIN_CLASS_NAME" value="com.example.clicker.ClickerApiApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ClickerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="clicker-backend" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.clicker.ClickerApiApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yaml.db: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="db" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yaml.redis_cache: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="redis_cache" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ClickerApiApplicationTests" />
+        <item itemvalue="Docker.docker-compose.yaml.redis_cache: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yaml.db: Compose Deployment" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ee8f8468-a469-4c76-b537-7963ef693aa6" name="Changes" comment="" />
+      <created>1739403364181</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1739403364181</updated>
+      <workItem from="1739403365270" duration="975000" />
+      <workItem from="1739404359105" duration="888000" />
+      <workItem from="1739405451074" duration="817000" />
+      <workItem from="1739743499792" duration="719000" />
+      <workItem from="1739747164132" duration="294000" />
+      <workItem from="1739747941890" duration="1090000" />
+      <workItem from="1739913706213" duration="3891000" />
+      <workItem from="1739930952167" duration="10763000" />
+      <workItem from="1740161367243" duration="49000" />
+      <workItem from="1740235877823" duration="25446000" />
+      <workItem from="1740265438777" duration="875000" />
+      <workItem from="1740266325929" duration="10241000" />
+      <workItem from="1740318572652" duration="18015000" />
+      <workItem from="1740357022373" duration="11120000" />
+      <workItem from="1740416072554" duration="8832000" />
+      <workItem from="1740522436722" duration="14071000" />
+      <workItem from="1740675669491" duration="20447000" />
+      <workItem from="1740848942317" duration="2547000" />
+      <workItem from="1740934365366" duration="681000" />
+      <workItem from="1740968851318" duration="9789000" />
+      <workItem from="1743876514982" duration="291000" />
+      <workItem from="1743880716474" duration="1285000" />
+      <workItem from="1743908561321" duration="3679000" />
+      <workItem from="1743961878967" duration="15367000" />
+      <workItem from="1744411447233" duration="302000" />
+      <workItem from="1744499787711" duration="891000" />
+      <workItem from="1744594908172" duration="2201000" />
+      <workItem from="1744876981549" duration="2166000" />
+      <workItem from="1744881086013" duration="2157000" />
+      <workItem from="1744902339959" duration="405000" />
+      <workItem from="1744952454705" duration="91000" />
+      <workItem from="1744973018017" duration="302000" />
+      <workItem from="1744979906422" duration="1714000" />
+      <workItem from="1744989149194" duration="34000" />
+      <workItem from="1744991856665" duration="558000" />
+      <workItem from="1745573515372" duration="2498000" />
+      <workItem from="1746090610583" duration="403000" />
+      <workItem from="1746234087289" duration="632000" />
+      <workItem from="1748264168715" duration="4933000" />
+      <workItem from="1751423166692" duration="353000" />
+      <workItem from="1756772137881" duration="140000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
