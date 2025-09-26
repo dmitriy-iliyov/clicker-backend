@@ -24,21 +24,21 @@ public class AvatarServiceImpl implements AvatarService {
         repository.save(new AvatarEntity(userId, url));
     }
 
+    // todo
     @Override
     public Resource findBytesByUserId(UUID userId) {
         String url = repository.findById(userId)
                 .orElseThrow(AvatarNotFoundByUserIdException::new)
                 .getAvatarUrl();
-
         return new FileSystemResource("");
     }
 
+    // todo
     @Override
     public String findBase64ByUserId(UUID userId) {
         String url = repository.findById(userId)
                 .orElseThrow(AvatarNotFoundByUserIdException::new)
                 .getAvatarUrl();
-
         return "";
     }
 

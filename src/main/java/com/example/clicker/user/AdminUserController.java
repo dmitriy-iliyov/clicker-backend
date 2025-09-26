@@ -17,7 +17,6 @@ public class AdminUserController {
 
     private final UserFacade userFacade;
 
-
     @GetMapping("/{id}")
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public ResponseEntity<?> getUserById(@PathVariable("id")

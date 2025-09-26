@@ -3,7 +3,10 @@ package com.example.clicker.currency.mapper;
 import com.example.clicker.currency.models.CurrencyEntity;
 import com.example.clicker.currency.models.dto.CurrencyCreateDto;
 import com.example.clicker.currency.models.dto.CurrencyResponseDto;
-import org.mapstruct.*;
+import org.mapstruct.Mapper;
+import org.mapstruct.MappingConstants;
+import org.mapstruct.Named;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import java.util.List;
 

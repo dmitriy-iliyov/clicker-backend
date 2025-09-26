@@ -31,8 +31,5 @@ services:
       image: redis
       networks:
         - default
-#      environment:
-#        REDIS_PASSWORD: redisroot
       ports:
         - "6379:6379"
-#      command: ["redis-server", "--requirepass", "redisroot"]

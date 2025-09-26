@@ -1,15 +1,8 @@
 package com.example.clicker;
 
 import com.example.clicker.currency.CurrencyRepository;
-import com.example.clicker.currency.models.CurrencyEntity;
-import com.example.clicker.general.exceptions.models.not_found.AuthorityNotFoundException;
-import com.example.clicker.general.utils.RandomUserEntityGenerator;
 import com.example.clicker.security.core.models.authority.AuthorityRepository;
-import com.example.clicker.security.core.models.authority.models.Authority;
-import com.example.clicker.security.core.models.authority.models.AuthorityEntity;
 import com.example.clicker.user.UserRepository;
-import com.example.clicker.user.models.entity.UserEntity;
-import com.github.f4b6a3.uuid.UuidCreator;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,9 +11,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 @SpringBootApplication

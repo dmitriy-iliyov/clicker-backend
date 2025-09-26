@@ -1,27 +1,11 @@
 package com.example.clicker.user;
 
 import com.example.clicker.security.core.models.authority.mapper.AuthorityMapper;
-import com.example.clicker.security.core.models.authority.models.Authority;
-import com.example.clicker.security.core.models.authority.models.AuthorityEntity;
 import com.example.clicker.user.mapper.MapperUtils;
-import com.example.clicker.user.mapper.UserMapperImpl;
-import com.example.clicker.user.models.dto.*;
-import com.example.clicker.user.models.entity.UnconfirmedUserEntity;
-import com.example.clicker.user.models.entity.UserEntity;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import java.time.Duration;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class UserMapperImplUnitTest {

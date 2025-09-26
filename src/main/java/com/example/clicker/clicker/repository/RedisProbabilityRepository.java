@@ -20,7 +20,6 @@ public class RedisProbabilityRepository implements InMemoryProbabilityRepository
     private final String USER_PROBABILITY_KEY_TEMPLATE = "user:prob:%s";
     private final RedisTemplate<String, Float> redisTemplate;
 
-
     @Override
     public void save(RedisProbabilityEntity probabilityEntity) {
         redisTemplate.opsForValue().set(
@@ -34,7 +33,8 @@ public class RedisProbabilityRepository implements InMemoryProbabilityRepository
         return Boolean.TRUE.equals(redisTemplate.hasKey(formatRedisKey(userId)));
     }
 
-    // lua script
+    // todo lua script
+
     @Override
     public void updateByUserId(RedisProbabilityEntity probabilityEntity) {
         redisTemplate.opsForValue().setIfPresent(

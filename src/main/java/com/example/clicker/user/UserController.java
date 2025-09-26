@@ -38,7 +38,6 @@ public class UserController {
     private final UserFacade userFacade;
     private final ConfirmationService confirmationService;
 
-
     // delete in future
     @GetMapping("/create")
     public String createUserForm(Model model) {

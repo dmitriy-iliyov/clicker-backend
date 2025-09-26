@@ -2,7 +2,6 @@ package com.example.clicker.security.configs;
 
 
 import com.example.clicker.security.core.CookieJwtAuthenticationFilterConfigurer;
-import com.example.clicker.security.core.filters.CheckUserConfirmationFilter;
 import com.example.clicker.security.core.handlers.login.LoginAuthenticationFailureHandler;
 import com.example.clicker.security.core.handlers.login.LoginAuthenticationSuccessHandler;
 import com.example.clicker.security.core.handlers.logout.DeactivatingJwtLogoutHandler;
@@ -20,7 +19,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.access.ExceptionTranslationFilter;
 import org.springframework.security.web.authentication.logout.CookieClearingLogoutHandler;
 import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.security.web.csrf.CsrfTokenRepository;
@@ -88,7 +86,6 @@ public class SecurityChainConfig {
                         })
                 )
                 .addFilterAfter(new XssFilter(), CsrfFilter.class)
-//                .addFilterBefore(new CheckUserConfirmationFilter(), ExceptionTranslationFilter.class)
                 .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
                         .requestMatchers(NO_AUTH_PERMITTED_URL_LIST).permitAll()
                         .requestMatchers(HttpMethod.POST, USER_REGISTRATION_URL).permitAll()
