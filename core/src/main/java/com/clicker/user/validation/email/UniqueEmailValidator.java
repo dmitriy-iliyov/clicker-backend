@@ -1,7 +1,7 @@
-package com.example.clicker.user.validation.email;
+package com.clicker.user.validation.email;
 
-import com.example.clicker.user.UnconfirmedUserService;
-import com.example.clicker.user.UserService;
+import com.clicker.user.UnconfirmedUserService;
+import com.clicker.user.UserService;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import lombok.RequiredArgsConstructor;

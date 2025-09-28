@@ -1,7 +1,7 @@
-package com.example.clicker.wallets.models;
+package com.clicker.wallets.models;
 
-import com.example.clicker.currency.models.CurrencyEntity;
-import com.example.clicker.user.models.entity.UserEntity;
+import com.clicker.currency.models.CurrencyEntity;
+import com.clicker.user.models.entity.UserEntity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;

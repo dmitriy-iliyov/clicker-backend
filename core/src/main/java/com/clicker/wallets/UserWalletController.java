@@ -1,9 +1,9 @@
 package com.clicker.wallets;
 
 
-import com.example.clicker.security.core.models.token.models.TokenUserDetails;
-import com.example.clicker.wallets.models.dto.WalletCreateDto;
-import com.example.clicker.wallets.models.dto.WalletUpdateDto;
+import com.clicker.security.core.models.token.models.TokenUserDetails;
+import com.clicker.wallets.models.dto.WalletCreateDto;
+import com.clicker.wallets.models.dto.WalletUpdateDto;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Positive;

@@ -3,7 +3,7 @@ package com.clicker.messaging.confirmation;
 
 import com.clicker.messaging.MessageDto;
 import com.clicker.messaging.MessageService;
-import com.example.clicker.user.UserFacade;
+import com.clicker.user.UserFacade;
 import io.jsonwebtoken.lang.Strings;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.extern.log4j.Log4j2;

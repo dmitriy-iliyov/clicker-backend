@@ -1,12 +1,12 @@
-package com.example.clicker.wallets.models.wallet_token;
+package com.clicker.wallets.models.wallet_token;
 
 
-import com.example.clicker.wallets.models.wallet_token.factory.WalletTokenFactory;
-import com.example.clicker.wallets.models.wallet_token.factory.WalletTokenFactoryImpl;
-import com.example.clicker.wallets.models.wallet_token.serializing.WalletTokenDeserializer;
-import com.example.clicker.wallets.models.wallet_token.serializing.WalletTokenDeserializerImpl;
-import com.example.clicker.wallets.models.wallet_token.serializing.WalletTokenSerializer;
-import com.example.clicker.wallets.models.wallet_token.serializing.WalletTokenSerializerImpl;
+import com.clicker.wallets.models.wallet_token.factory.WalletTokenFactory;
+import com.clicker.wallets.models.wallet_token.factory.WalletTokenFactoryImpl;
+import com.clicker.wallets.models.wallet_token.serializing.WalletTokenDeserializer;
+import com.clicker.wallets.models.wallet_token.serializing.WalletTokenDeserializerImpl;
+import com.clicker.wallets.models.wallet_token.serializing.WalletTokenSerializer;
+import com.clicker.wallets.models.wallet_token.serializing.WalletTokenSerializerImpl;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,7 +1,7 @@
-package com.example.clicker.wallets.models.dto;
+package com.clicker.wallets.models.dto;
 
 
-import com.example.clicker.currency.validation.id.CurrencyId;
+import com.clicker.currency.validation.id.CurrencyId;
 import com.example.clicker.wallets.validation.address.WalletAddress;
 import com.example.clicker.wallets.validation.unique_address.UniqueWalletAddress;
 import jakarta.validation.constraints.NotBlank;

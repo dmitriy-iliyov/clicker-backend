@@ -1,6 +1,6 @@
-package com.example.clicker.security.core.filters;
+package com.clicker.security.core.filters;
 
-import com.example.clicker.security.core.models.authority.models.Authority;
+import com.clicker.security.core.models.authority.models.Authority;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;

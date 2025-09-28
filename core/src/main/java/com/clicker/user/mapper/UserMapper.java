@@ -1,10 +1,10 @@
-package com.example.clicker.user.mapper;
+package com.clicker.user.mapper;
 
 
-import com.example.clicker.security.core.models.authority.mapper.AuthorityMapper;
-import com.example.clicker.user.models.dto.*;
-import com.example.clicker.user.models.entity.UnconfirmedUserEntity;
-import com.example.clicker.user.models.entity.UserEntity;
+import com.clicker.security.core.models.authority.mapper.AuthorityMapper;
+import com.clicker.user.models.dto.*;
+import com.clicker.user.models.entity.UnconfirmedUserEntity;
+import com.clicker.user.models.entity.UserEntity;
 import org.mapstruct.*;
 
 import java.util.List;

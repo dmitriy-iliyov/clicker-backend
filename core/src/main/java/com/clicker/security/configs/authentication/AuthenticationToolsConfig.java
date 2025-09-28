@@ -6,7 +6,7 @@ import com.clicker.security.core.models.token.DeactivateTokenServices;
 import com.clicker.security.core.models.token.factory.TokenFactory;
 import com.clicker.security.core.models.token.serializing.TokenDeserializer;
 import com.clicker.security.core.models.token.serializing.TokenSerializer;
-import com.example.clicker.user.UserService;
+import com.clicker.user.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.context.annotation.Bean;

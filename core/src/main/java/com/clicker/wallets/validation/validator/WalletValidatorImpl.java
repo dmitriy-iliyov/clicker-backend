@@ -1,9 +1,9 @@
-package com.example.clicker.wallets.validation.validator;
+package com.clicker.wallets.validation.validator;
 
 import com.clicker.general.exceptions.models.IllegalInputException;
 import com.clicker.general.exceptions.models.validation.BelongWalletValidationException;
-import com.example.clicker.user.models.dto.UserResponseDto;
-import com.example.clicker.wallets.models.dto.WalletResponseDto;
+import com.clicker.user.models.dto.UserResponseDto;
+import com.clicker.wallets.models.dto.WalletResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

@@ -1,11 +1,12 @@
 package com.clicker.wallets.mapper;
 
-import com.example.clicker.currency.mapper.CurrencyMapper;
-import com.example.clicker.currency.models.CurrencyEntity;
-import com.example.clicker.wallets.models.WalletEntity;
-import com.example.clicker.wallets.models.dto.WalletCreateDto;
-import com.example.clicker.wallets.models.dto.WalletResponseDto;
-import com.example.clicker.wallets.models.dto.WalletUpdateDto;
+import com.clicker.currency.CurrencyService;
+import com.clicker.currency.mapper.CurrencyMapper;
+import com.clicker.currency.models.CurrencyEntity;
+import com.clicker.wallets.models.WalletEntity;
+import com.clicker.wallets.models.dto.WalletCreateDto;
+import com.clicker.wallets.models.dto.WalletResponseDto;
+import com.clicker.wallets.models.dto.WalletUpdateDto;
 import org.mapstruct.*;
 
 import java.util.Set;

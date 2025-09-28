@@ -1,6 +1,6 @@
-package com.example.clicker.user.models.dto;
+package com.clicker.user.models.dto;
 
-import com.example.clicker.wallets.models.dto.WalletResponseDto;
+import com.clicker.wallets.models.dto.WalletResponseDto;
 
 import java.util.Set;
 import java.util.UUID;

@@ -1,4 +1,4 @@
-package com.example.clicker.user.validation.email;
+package com.clicker.user.validation.email;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;

@@ -1,6 +1,6 @@
-package com.example.clicker.wallets.validation.id;
+package com.clicker.wallets.validation.id;
 
-import com.example.clicker.wallets.WalletsService;
+import com.clicker.wallets.WalletsService;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import lombok.RequiredArgsConstructor;

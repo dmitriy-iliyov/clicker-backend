@@ -1,10 +1,10 @@
 package com.clicker.wallets;
 
-import com.example.clicker.user.models.entity.UserEntity;
-import com.example.clicker.wallets.models.dto.FullWalletResponseDto;
-import com.example.clicker.wallets.models.dto.WalletCreateDto;
-import com.example.clicker.wallets.models.dto.WalletResponseDto;
-import com.example.clicker.wallets.models.dto.WalletUpdateDto;
+import com.clicker.user.models.entity.UserEntity;
+import com.clicker.wallets.models.dto.FullWalletResponseDto;
+import com.clicker.wallets.models.dto.WalletCreateDto;
+import com.clicker.wallets.models.dto.WalletResponseDto;
+import com.clicker.wallets.models.dto.WalletUpdateDto;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.util.List;

@@ -1,7 +1,7 @@
 package com.clicker.user;
 
 
-import com.example.clicker.user.models.entity.UnconfirmedUserEntity;
+import com.clicker.user.models.entity.UnconfirmedUserEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

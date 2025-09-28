@@ -1,6 +1,6 @@
-package com.example.clicker.security.core.models.token;
+package com.clicker.security.core.models.token;
 
-import com.example.clicker.security.core.models.token.models.TokenEntity;
+import com.clicker.security.core.models.token.models.TokenEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

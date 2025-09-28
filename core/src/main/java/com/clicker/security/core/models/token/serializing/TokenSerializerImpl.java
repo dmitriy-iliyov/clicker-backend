@@ -1,6 +1,6 @@
-package com.example.clicker.security.core.models.token.serializing;
+package com.clicker.security.core.models.token.serializing;
 
-import com.example.clicker.security.core.models.token.models.Token;
+import com.clicker.security.core.models.token.models.Token;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Header;
 import io.jsonwebtoken.Jwts;

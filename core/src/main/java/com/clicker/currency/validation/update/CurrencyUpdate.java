@@ -1,4 +1,4 @@
-package com.example.clicker.currency.validation.update;
+package com.clicker.currency.validation.update;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;

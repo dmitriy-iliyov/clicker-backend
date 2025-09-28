@@ -3,7 +3,7 @@ package com.clicker.messaging.recovery;
 import com.clicker.general.exceptions.models.recovery.RecoveryException;
 import com.clicker.messaging.MessageDto;
 import com.clicker.messaging.MessageService;
-import com.example.clicker.user.UserFacade;
+import com.clicker.user.UserFacade;
 import io.jsonwebtoken.lang.Strings;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Qualifier;

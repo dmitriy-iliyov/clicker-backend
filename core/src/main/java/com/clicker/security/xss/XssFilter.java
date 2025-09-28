@@ -1,4 +1,4 @@
-package com.example.clicker.security.xss;
+package com.clicker.security.xss;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

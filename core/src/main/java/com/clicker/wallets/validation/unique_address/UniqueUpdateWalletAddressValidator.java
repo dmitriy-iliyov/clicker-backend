@@ -1,8 +1,8 @@
-package com.example.clicker.wallets.validation.unique_address;
+package com.clicker.wallets.validation.unique_address;
 
-import com.example.clicker.wallets.WalletsService;
-import com.example.clicker.wallets.models.dto.FullWalletResponseDto;
-import com.example.clicker.wallets.models.dto.WalletUpdateDto;
+import com.clicker.wallets.WalletsService;
+import com.clicker.wallets.models.dto.FullWalletResponseDto;
+import com.clicker.wallets.models.dto.WalletUpdateDto;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import lombok.RequiredArgsConstructor;

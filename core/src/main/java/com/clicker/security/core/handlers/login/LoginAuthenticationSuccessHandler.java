@@ -1,7 +1,7 @@
-package com.example.clicker.security.core.handlers.login;
+package com.clicker.security.core.handlers.login;
 
-import com.example.clicker.security.JwtNCsrfSessionAuthenticationStrategy;
-import com.example.clicker.security.core.models.authority.models.Authority;
+import com.clicker.security.JwtNCsrfSessionAuthenticationStrategy;
+import com.clicker.security.core.models.authority.models.Authority;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.Data;

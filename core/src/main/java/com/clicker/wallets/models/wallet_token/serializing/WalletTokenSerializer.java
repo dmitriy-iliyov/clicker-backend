@@ -1,6 +1,6 @@
-package com.example.clicker.wallets.models.wallet_token.serializing;
+package com.clicker.wallets.models.wallet_token.serializing;
 
-import com.example.clicker.wallets.models.wallet_token.WalletToken;
+import com.clicker.wallets.models.wallet_token.WalletToken;
 
 public interface WalletTokenSerializer {
 

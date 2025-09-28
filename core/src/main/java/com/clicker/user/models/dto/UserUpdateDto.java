@@ -1,6 +1,6 @@
-package com.example.clicker.user.models.dto;
+package com.clicker.user.models.dto;
 
-import com.example.clicker.wallets.models.dto.WalletUpdateDto;
+import com.clicker.wallets.models.dto.WalletUpdateDto;
 
 import java.util.List;
 

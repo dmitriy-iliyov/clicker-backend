@@ -1,4 +1,4 @@
-package com.example.clicker.user.models.entity;
+package com.clicker.user.models.entity;
 
 import com.clicker.general.utils.uuid.UuidFactory;
 import com.fasterxml.jackson.annotation.JsonCreator;

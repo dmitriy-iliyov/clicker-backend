@@ -1,7 +1,7 @@
 package com.clicker.security.configs.authentication;
 
-import com.example.clicker.security.JwtNCsrfSessionAuthenticationStrategy;
-import com.example.clicker.security.core.CookieJwtSessionAuthenticationStrategy;
+import com.clicker.security.JwtNCsrfSessionAuthenticationStrategy;
+import com.clicker.security.core.CookieJwtSessionAuthenticationStrategy;
 import com.clicker.security.core.handlers.login.LoginAuthenticationSuccessHandler;
 import com.clicker.security.csrf.CsrfTokenSessionAuthenticationStrategy;
 import lombok.RequiredArgsConstructor;

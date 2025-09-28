@@ -1,6 +1,6 @@
-package com.example.clicker.user.models.dto;
+package com.clicker.user.models.dto;
 
-import com.example.clicker.security.core.models.authority.models.Authority;
+import com.clicker.security.core.models.authority.models.Authority;
 
 import java.time.Instant;
 import java.util.List;

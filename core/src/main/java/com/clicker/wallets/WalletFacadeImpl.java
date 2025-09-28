@@ -1,13 +1,13 @@
 package com.clicker.wallets;
 
-import com.example.clicker.user.UserService;
-import com.example.clicker.user.models.dto.UserResponseDto;
-import com.example.clicker.user.models.entity.UserEntity;
-import com.example.clicker.wallets.models.dto.FullWalletResponseDto;
-import com.example.clicker.wallets.models.dto.WalletCreateDto;
-import com.example.clicker.wallets.models.dto.WalletResponseDto;
-import com.example.clicker.wallets.models.dto.WalletUpdateDto;
-import com.example.clicker.wallets.validation.validator.WalletValidator;
+import com.clicker.user.UserService;
+import com.clicker.user.models.dto.UserResponseDto;
+import com.clicker.user.models.entity.UserEntity;
+import com.clicker.wallets.models.dto.FullWalletResponseDto;
+import com.clicker.wallets.models.dto.WalletCreateDto;
+import com.clicker.wallets.models.dto.WalletResponseDto;
+import com.clicker.wallets.models.dto.WalletUpdateDto;
+import com.clicker.wallets.validation.validator.WalletValidator;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

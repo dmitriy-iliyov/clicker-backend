@@ -1,6 +1,6 @@
-package com.example.clicker.user.models.entity;
+package com.clicker.user.models.entity;
 
-import com.example.clicker.security.core.models.authority.models.AuthorityEntity;
+import com.clicker.security.core.models.authority.models.AuthorityEntity;
 import com.example.clicker.wallets.models.WalletEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

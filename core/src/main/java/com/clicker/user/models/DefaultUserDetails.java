@@ -1,4 +1,4 @@
-package com.example.clicker.user.models;
+package com.clicker.user.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,7 +1,7 @@
-package com.example.clicker.security.core.models.token.serializing;
+package com.clicker.security.core.models.token.serializing;
 
 import com.clicker.general.exceptions.models.CookieJwtExpired;
-import com.example.clicker.security.core.models.token.models.Token;
+import com.clicker.security.core.models.token.models.Token;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwt;
 import io.jsonwebtoken.Jwts;

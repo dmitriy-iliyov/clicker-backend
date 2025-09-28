@@ -1,4 +1,4 @@
-package com.example.clicker.wallets.models.dto;
+package com.clicker.wallets.models.dto;
 
 import java.time.Instant;
 import java.util.UUID;

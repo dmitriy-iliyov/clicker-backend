@@ -1,4 +1,4 @@
-package com.example.clicker.security.xss;
+package com.clicker.security.xss;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;

@@ -1,8 +1,8 @@
-package com.example.clicker.user.mapper;
+package com.clicker.user.mapper;
 
-import com.example.clicker.wallets.mapper.WalletMapper;
-import com.example.clicker.wallets.models.WalletEntity;
-import com.example.clicker.wallets.models.dto.WalletResponseDto;
+import com.clicker.wallets.mapper.WalletMapper;
+import com.clicker.wallets.models.WalletEntity;
+import com.clicker.wallets.models.dto.WalletResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.mapstruct.Named;
 import org.springframework.security.crypto.password.PasswordEncoder;

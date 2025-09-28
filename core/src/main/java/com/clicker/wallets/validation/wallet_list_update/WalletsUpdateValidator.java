@@ -1,6 +1,6 @@
-package com.example.clicker.wallets.validation.wallet_list_update;
+package com.clicker.wallets.validation.wallet_list_update;
 
-import com.example.clicker.wallets.models.dto.WalletUpdateDto;
+import com.clicker.wallets.models.dto.WalletUpdateDto;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import org.apache.commons.lang3.tuple.Pair;

@@ -1,8 +1,8 @@
-package com.example.clicker.security.configs.csrf;
+package com.clicker.security.configs.csrf;
 
-import com.example.clicker.security.csrf.CsrfTokenMasker;
-import com.example.clicker.security.csrf.CsrfTokenMaskerImpl;
-import com.example.clicker.security.csrf.CsrfTokenSessionAuthenticationStrategy;
+import com.clicker.security.csrf.CsrfTokenMasker;
+import com.clicker.security.csrf.CsrfTokenMaskerImpl;
+import com.clicker.security.csrf.CsrfTokenSessionAuthenticationStrategy;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;

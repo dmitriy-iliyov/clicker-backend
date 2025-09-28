@@ -1,9 +1,9 @@
 package com.clicker.user;
 
 import com.clicker.general.exceptions.models.not_found.NotFoundException;
-import com.example.clicker.user.models.dto.*;
-import com.example.clicker.wallets.models.dto.WalletUpdateDto;
-import com.example.clicker.wallets.validation.validator.WalletValidator;
+import com.clicker.user.models.dto.*;
+import com.clicker.wallets.models.dto.WalletUpdateDto;
+import com.clicker.wallets.validation.validator.WalletValidator;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Validator;

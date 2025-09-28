@@ -1,4 +1,4 @@
-package com.example.clicker.wallets.validation.id;
+package com.clicker.wallets.validation.id;
 
 
 import jakarta.validation.Constraint;

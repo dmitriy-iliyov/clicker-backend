@@ -1,6 +1,6 @@
-package com.example.clicker.user.models.dto;
+package com.clicker.user.models.dto;
 
-import com.example.clicker.user.validation.email.UniqueEmail;
+import com.clicker.user.validation.email.UniqueEmail;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

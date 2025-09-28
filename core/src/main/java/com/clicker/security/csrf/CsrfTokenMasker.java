@@ -1,4 +1,4 @@
-package com.example.clicker.security.csrf;
+package com.clicker.security.csrf;
 
 public interface CsrfTokenMasker {
 

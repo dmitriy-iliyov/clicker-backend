@@ -1,4 +1,4 @@
-package com.example.clicker.user.validation.username;
+package com.clicker.user.validation.username;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;

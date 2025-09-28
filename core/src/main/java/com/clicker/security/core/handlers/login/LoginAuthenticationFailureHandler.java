@@ -1,4 +1,4 @@
-package com.example.clicker.security.core.handlers.login;
+package com.clicker.security.core.handlers.login;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

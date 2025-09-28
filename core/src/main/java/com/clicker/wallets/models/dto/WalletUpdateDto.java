@@ -1,9 +1,9 @@
-package com.example.clicker.wallets.models.dto;
+package com.clicker.wallets.models.dto;
 
-import com.example.clicker.currency.validation.id.CurrencyId;
-import com.example.clicker.wallets.validation.address.WalletAddress;
-import com.example.clicker.wallets.validation.id.WalletId;
-import com.example.clicker.wallets.validation.unique_address.UniqueWalletAddress;
+import com.clicker.currency.validation.id.CurrencyId;
+import com.clicker.wallets.validation.address.WalletAddress;
+import com.clicker.wallets.validation.id.WalletId;
+import com.clicker.wallets.validation.unique_address.UniqueWalletAddress;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;

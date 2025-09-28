@@ -7,7 +7,7 @@ import com.clicker.security.core.models.token.serializing.TokenDeserializer;
 import com.clicker.security.core.models.token.serializing.TokenDeserializerImpl;
 import com.clicker.security.core.models.token.serializing.TokenSerializer;
 import com.clicker.security.core.models.token.serializing.TokenSerializerImpl;
-import com.example.clicker.user.UserFacade;
+import com.clicker.user.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

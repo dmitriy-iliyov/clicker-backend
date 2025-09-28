@@ -1,8 +1,8 @@
 package com.clicker.user;
 
-import com.example.clicker.user.models.dto.*;
-import com.example.clicker.user.models.entity.UserEntity;
-import com.example.clicker.wallets.models.dto.WalletResponseDto;
+import com.clicker.user.models.dto.*;
+import com.clicker.user.models.entity.UserEntity;
+import com.clicker.wallets.models.dto.WalletResponseDto;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UserDetailsService;

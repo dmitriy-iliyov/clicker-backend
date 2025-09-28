@@ -1,8 +1,8 @@
-package com.example.clicker.security.core.handlers.logout;
+package com.clicker.security.core.handlers.logout;
 
-import com.example.clicker.security.core.models.token.DeactivateTokenServices;
-import com.example.clicker.security.core.models.token.models.TokenEntity;
-import com.example.clicker.security.core.models.token.models.TokenUserDetails;
+import com.clicker.security.core.models.token.DeactivateTokenServices;
+import com.clicker.security.core.models.token.models.TokenEntity;
+import com.clicker.security.core.models.token.models.TokenUserDetails;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;

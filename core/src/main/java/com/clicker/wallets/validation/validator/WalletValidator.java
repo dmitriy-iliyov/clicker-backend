@@ -1,6 +1,6 @@
-package com.example.clicker.wallets.validation.validator;
+package com.clicker.wallets.validation.validator;
 
-import com.example.clicker.user.models.dto.UserResponseDto;
+import com.clicker.user.models.dto.UserResponseDto;
 
 import java.util.List;
 

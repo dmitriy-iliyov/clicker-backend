@@ -1,6 +1,6 @@
-package com.example.clicker.wallets.validation.address;
+package com.clicker.wallets.validation.address;
 
-import com.example.clicker.wallets.models.dto.WalletUpdateDto;
+import com.clicker.wallets.models.dto.WalletUpdateDto;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 

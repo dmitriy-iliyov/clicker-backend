@@ -1,4 +1,4 @@
-package com.example.clicker.wallets.models.wallet_token;
+package com.clicker.wallets.models.wallet_token;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

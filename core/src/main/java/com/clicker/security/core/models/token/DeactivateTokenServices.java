@@ -1,8 +1,8 @@
-package com.example.clicker.security.core.models.token;
+package com.clicker.security.core.models.token;
 
-import com.example.clicker.security.core.models.token.models.Token;
-import com.example.clicker.security.core.models.token.models.TokenEntity;
-import com.example.clicker.security.core.models.token.models.TokenUserDetails;
+import com.clicker.security.core.models.token.models.Token;
+import com.clicker.security.core.models.token.models.TokenEntity;
+import com.clicker.security.core.models.token.models.TokenUserDetails;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.AuthenticationUserDetailsService;
 import org.springframework.security.core.userdetails.UserDetails;

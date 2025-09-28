@@ -1,6 +1,6 @@
 package com.clicker.user;
 
-import com.example.clicker.user.models.entity.UserEntity;
+import com.clicker.user.models.entity.UserEntity;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

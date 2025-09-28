@@ -1,7 +1,7 @@
-package com.example.clicker.security.core.models.authority;
+package com.clicker.security.core.models.authority;
 
-import com.example.clicker.security.core.models.authority.models.Authority;
-import com.example.clicker.security.core.models.authority.models.AuthorityEntity;
+import com.clicker.security.core.models.authority.models.Authority;
+import com.clicker.security.core.models.authority.models.AuthorityEntity;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

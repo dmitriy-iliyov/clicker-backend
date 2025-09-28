@@ -2,8 +2,8 @@ package com.clicker.user;
 
 
 import com.clicker.messaging.confirmation.ConfirmationService;
-import com.example.clicker.security.core.models.token.models.TokenUserDetails;
-import com.example.clicker.user.models.dto.*;
+import com.clicker.security.core.models.token.models.TokenUserDetails;
+import com.clicker.user.models.dto.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;

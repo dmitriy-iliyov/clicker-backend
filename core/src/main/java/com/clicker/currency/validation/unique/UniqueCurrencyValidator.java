@@ -1,6 +1,6 @@
-package com.example.clicker.currency.validation.unique;
+package com.clicker.currency.validation.unique;
 
-import com.example.clicker.currency.CurrencyService;
+import com.clicker.currency.CurrencyService;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import lombok.RequiredArgsConstructor;

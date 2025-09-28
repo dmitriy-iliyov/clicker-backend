@@ -1,9 +1,9 @@
-package com.example.clicker.user.models.dto;
+package com.clicker.user.models.dto;
 
-import com.example.clicker.security.core.models.authority.models.Authority;
-import com.example.clicker.user.validation.update_user.UserUpdate;
-import com.example.clicker.wallets.models.dto.WalletUpdateDto;
-import com.example.clicker.wallets.validation.wallet_list_update.WalletsUpdate;
+import com.clicker.security.core.models.authority.models.Authority;
+import com.clicker.user.validation.update_user.UserUpdate;
+import com.clicker.wallets.models.dto.WalletUpdateDto;
+import com.clicker.wallets.validation.wallet_list_update.WalletsUpdate;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

@@ -1,4 +1,4 @@
-package com.example.clicker.currency.models.dto;
+package com.clicker.currency.models.dto;
 
 import com.example.clicker.currency.validation.update.CurrencyUpdate;
 import jakarta.validation.constraints.NotBlank;

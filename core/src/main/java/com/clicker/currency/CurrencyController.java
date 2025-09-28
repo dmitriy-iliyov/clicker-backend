@@ -1,6 +1,9 @@
 package com.clicker.currency;
 
 
+import com.clicker.currency.models.dto.CurrencyCreateDto;
+import com.clicker.currency.models.dto.CurrencyUpdateDto;
+import com.clicker.currency.models.dto.FullCurrencyResponseDto;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;

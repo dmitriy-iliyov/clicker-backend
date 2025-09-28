@@ -1,8 +1,8 @@
-package com.example.clicker.security.core;
+package com.clicker.security.core;
 
-import com.example.clicker.security.core.models.token.factory.TokenFactory;
-import com.example.clicker.security.core.models.token.models.Token;
-import com.example.clicker.security.core.models.token.serializing.TokenSerializer;
+import com.clicker.security.core.models.token.factory.TokenFactory;
+import com.clicker.security.core.models.token.models.Token;
+import com.clicker.security.core.models.token.serializing.TokenSerializer;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

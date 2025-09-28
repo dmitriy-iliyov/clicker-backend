@@ -1,8 +1,8 @@
-package com.example.clicker.currency.mapper;
+package com.clicker.currency.mapper;
 
-import com.example.clicker.currency.models.CurrencyEntity;
-import com.example.clicker.currency.models.dto.CurrencyCreateDto;
-import com.example.clicker.currency.models.dto.CurrencyResponseDto;
+import com.clicker.currency.models.CurrencyEntity;
+import com.clicker.currency.models.dto.CurrencyCreateDto;
+import com.clicker.currency.models.dto.CurrencyResponseDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
 import org.mapstruct.Named;

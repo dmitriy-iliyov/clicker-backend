@@ -1,7 +1,7 @@
 package com.clicker.user;
 
-import com.example.clicker.user.models.dto.SystemUserDto;
-import com.example.clicker.user.models.dto.UserRegistrationDto;
+import com.clicker.user.models.dto.SystemUserDto;
+import com.clicker.user.models.dto.UserRegistrationDto;
 
 public interface UnconfirmedUserService {
 

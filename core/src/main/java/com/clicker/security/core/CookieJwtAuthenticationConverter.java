@@ -1,7 +1,7 @@
-package com.example.clicker.security.core;
+package com.clicker.security.core;
 
-import com.example.clicker.security.core.models.token.models.Token;
-import com.example.clicker.security.core.models.token.serializing.TokenDeserializer;
+import com.clicker.security.core.models.token.models.Token;
+import com.clicker.security.core.models.token.serializing.TokenDeserializer;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;

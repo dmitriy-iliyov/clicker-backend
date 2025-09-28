@@ -1,8 +1,8 @@
-package com.example.clicker.currency.validation.update;
+package com.clicker.currency.validation.update;
 
-import com.example.clicker.currency.CurrencyService;
-import com.example.clicker.currency.models.dto.CurrencyResponseDto;
-import com.example.clicker.currency.models.dto.CurrencyUpdateDto;
+import com.clicker.currency.CurrencyService;
+import com.clicker.currency.models.dto.CurrencyResponseDto;
+import com.clicker.currency.models.dto.CurrencyUpdateDto;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import lombok.RequiredArgsConstructor;

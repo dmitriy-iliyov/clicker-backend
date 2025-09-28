@@ -1,4 +1,4 @@
-package com.example.clicker.security.core.handlers.jwt_authentication;
+package com.clicker.security.core.handlers.jwt_authentication;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

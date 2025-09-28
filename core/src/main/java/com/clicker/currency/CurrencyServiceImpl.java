@@ -1,12 +1,12 @@
 package com.clicker.currency;
 
-import com.example.clicker.currency.mapper.CurrencyMapper;
-import com.example.clicker.currency.mapper.FullCurrencyMapper;
-import com.example.clicker.currency.models.CurrencyEntity;
-import com.example.clicker.currency.models.dto.CurrencyCreateDto;
-import com.example.clicker.currency.models.dto.CurrencyResponseDto;
-import com.example.clicker.currency.models.dto.CurrencyUpdateDto;
-import com.example.clicker.currency.models.dto.FullCurrencyResponseDto;
+import com.clicker.currency.mapper.CurrencyMapper;
+import com.clicker.currency.mapper.FullCurrencyMapper;
+import com.clicker.currency.models.CurrencyEntity;
+import com.clicker.currency.models.dto.CurrencyCreateDto;
+import com.clicker.currency.models.dto.CurrencyResponseDto;
+import com.clicker.currency.models.dto.CurrencyUpdateDto;
+import com.clicker.currency.models.dto.FullCurrencyResponseDto;
 import com.clicker.general.exceptions.models.not_found.CurrencyNotFoundByCodeException;
 import com.clicker.general.exceptions.models.not_found.CurrencyNotFoundByIdException;
 import lombok.RequiredArgsConstructor;

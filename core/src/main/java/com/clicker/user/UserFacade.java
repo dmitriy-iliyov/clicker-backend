@@ -1,6 +1,6 @@
 package com.clicker.user;
 
-import com.example.clicker.user.models.dto.*;
+import com.clicker.user.models.dto.*;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.authentication.BadCredentialsException;
 

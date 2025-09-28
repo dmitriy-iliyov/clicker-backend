@@ -1,11 +1,11 @@
-package com.example.clicker.user.validation.update_user;
+package com.clicker.user.validation.update_user;
 
 import com.clicker.general.exceptions.models.not_found.NotFoundException;
 import com.clicker.messaging.confirmation.ConfirmationService;
-import com.example.clicker.security.core.models.authority.models.Authority;
-import com.example.clicker.user.UserFacade;
-import com.example.clicker.user.models.dto.SystemUserDto;
-import com.example.clicker.user.models.dto.SystemUserUpdateDto;
+import com.clicker.security.core.models.authority.models.Authority;
+import com.clicker.user.UserFacade;
+import com.clicker.user.models.dto.SystemUserDto;
+import com.clicker.user.models.dto.SystemUserUpdateDto;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import lombok.RequiredArgsConstructor;

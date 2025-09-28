@@ -1,4 +1,4 @@
-package com.example.clicker.security.core.models.token.models;
+package com.clicker.security.core.models.token.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

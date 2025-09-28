@@ -1,7 +1,7 @@
 package com.clicker.wallets;
 
-import com.example.clicker.wallets.models.WalletEntity;
-import com.example.clicker.wallets.models.dto.FullWalletResponseDto;
+import com.clicker.wallets.models.WalletEntity;
+import com.clicker.wallets.models.dto.FullWalletResponseDto;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -24,7 +24,7 @@ public interface WalletsRepository extends JpaRepository<WalletEntity, Long> {
     Set<WalletEntity> findAllWithCurrencyByUserId(UUID id);
 
     @Query("""
-        SELECT new com.example.clicker.wallets.models.dto.FullWalletResponseDto(
+        SELECT new com.clicker.wallets.models.dto.FullWalletResponseDto(
             w.id, c.id, c.code, w.address, w.user.id, w.createdAt, w.updatedAt)
         FROM WalletEntity w
         LEFT JOIN w.currency c
@@ -33,7 +33,7 @@ public interface WalletsRepository extends JpaRepository<WalletEntity, Long> {
     List<FullWalletResponseDto> findAllFullByAddress(@Param("address") String address);
 
     @Query("""
-        SELECT new com.example.clicker.wallets.models.dto.FullWalletResponseDto(
+        SELECT new com.clicker.wallets.models.dto.FullWalletResponseDto(
             w.id, c.id, c.code, w.address, w.user.id, w.createdAt, w.updatedAt)
         FROM WalletEntity w
         LEFT JOIN w.currency c

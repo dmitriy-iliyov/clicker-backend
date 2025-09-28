@@ -1,4 +1,4 @@
-package com.example.clicker.currency.models;
+package com.clicker.currency.models;
 
 
 import com.example.clicker.wallets.models.WalletEntity;

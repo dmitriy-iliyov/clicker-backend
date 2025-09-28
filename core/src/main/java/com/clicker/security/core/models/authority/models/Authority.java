@@ -1,4 +1,4 @@
-package com.example.clicker.security.core.models.authority.models;
+package com.clicker.security.core.models.authority.models;
 
 import org.springframework.security.core.GrantedAuthority;
 

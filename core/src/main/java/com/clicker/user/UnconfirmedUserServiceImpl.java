@@ -2,10 +2,10 @@ package com.clicker.user;
 
 import com.clicker.general.exceptions.models.not_found.UnconfirmedUserNotFoundByEmailException;
 import com.clicker.general.exceptions.models.not_found.UnconfirmedUserNotFoundByUsernameException;
-import com.example.clicker.user.mapper.UserMapper;
-import com.example.clicker.user.models.dto.SystemUserDto;
-import com.example.clicker.user.models.dto.UserRegistrationDto;
-import com.example.clicker.user.models.entity.UnconfirmedUserEntity;
+import com.clicker.user.mapper.UserMapper;
+import com.clicker.user.models.dto.SystemUserDto;
+import com.clicker.user.models.dto.UserRegistrationDto;
+import com.clicker.user.models.entity.UnconfirmedUserEntity;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;

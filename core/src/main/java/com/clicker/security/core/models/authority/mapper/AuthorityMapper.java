@@ -1,8 +1,8 @@
-package com.example.clicker.security.core.models.authority.mapper;
+package com.clicker.security.core.models.authority.mapper;
 
 
-import com.example.clicker.security.core.models.authority.models.Authority;
-import com.example.clicker.security.core.models.authority.models.AuthorityEntity;
+import com.clicker.security.core.models.authority.models.Authority;
+import com.clicker.security.core.models.authority.models.AuthorityEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
 import org.mapstruct.Named;

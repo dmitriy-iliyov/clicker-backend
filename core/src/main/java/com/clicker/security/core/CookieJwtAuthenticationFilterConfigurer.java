@@ -1,9 +1,9 @@
-package com.example.clicker.security.core;
+package com.clicker.security.core;
 
-import com.example.clicker.security.core.handlers.jwt_authentication.CookieJwtAuthenticationFailureHandler;
-import com.example.clicker.security.core.handlers.jwt_authentication.CookieJwtAuthenticationSuccessHandler;
-import com.example.clicker.security.core.models.token.DeactivateTokenServices;
-import com.example.clicker.security.core.models.token.serializing.TokenDeserializer;
+import com.clicker.security.core.handlers.jwt_authentication.CookieJwtAuthenticationFailureHandler;
+import com.clicker.security.core.handlers.jwt_authentication.CookieJwtAuthenticationSuccessHandler;
+import com.clicker.security.core.models.token.DeactivateTokenServices;
+import com.clicker.security.core.models.token.serializing.TokenDeserializer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.SecurityConfigurer;

@@ -1,4 +1,4 @@
-package com.example.clicker.wallets.validation.wallet_list_update;
+package com.clicker.wallets.validation.wallet_list_update;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
