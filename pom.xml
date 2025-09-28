@@ -19,7 +19,8 @@
     <description>clicker-backend</description>
     <modules>
         <module>app</module>
-        <module>core</module>
+        <module>modules/core</module>
+        <module>modules/clicker</module>
     </modules>
 
     <properties>

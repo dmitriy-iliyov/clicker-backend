@@ -7,10 +7,12 @@
         <groupId>com.clicker</groupId>
         <artifactId>clicker-backend</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <artifactId>app</artifactId>
+    <artifactId>clicker</artifactId>
+    <name>clicker-service</name>
+    <packaging>jar</packaging>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -19,11 +21,7 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>com.clicker</groupId>
-            <artifactId>core</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+
     </dependencies>
 
     <build>
@@ -35,7 +33,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.clicker.ApplicationRunner</mainClass>
+                            <mainClass>com.clicker.ClickerRunner</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
