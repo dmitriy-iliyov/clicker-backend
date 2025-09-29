@@ -1,7 +1,6 @@
 package com.clicker.repository;
 
 import java.util.Optional;
-import java.util.UUID;
 
 public interface ClickerStateRepository<T, ID> {
     T save(T entity);

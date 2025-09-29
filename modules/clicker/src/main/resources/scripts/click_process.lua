@@ -9,7 +9,9 @@ if redis.call('EXISTS', uid) == 0 then
             'clicksCount', 1
     )
     redis.call('EXPIRE', uid, tonumber(ttl))
+    return 1
 else
     redis.call('HSET', uid, 'probability', tonumber(prob))
     redis.call('HINCRBY', uid, 'clicksCount', 1)
+    return 1
 end

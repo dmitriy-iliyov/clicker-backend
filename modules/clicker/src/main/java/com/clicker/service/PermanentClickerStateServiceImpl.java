@@ -1,8 +1,8 @@
 package com.clicker.service;
 
-import com.clicker.models.ClickerStateMapper;
 import com.clicker.models.ClickerStateDto;
 import com.clicker.models.ClickerStateEntity;
+import com.clicker.models.ClickerStateMapper;
 import com.clicker.repository.PermanentClickerStateRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

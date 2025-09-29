@@ -1,7 +1,8 @@
 package com.clicker.service;
 
-import com.clicker.models.ClickerStateMapper;
+import com.clicker.exception.ClickProcessException;
 import com.clicker.models.ClickerStateDto;
+import com.clicker.models.ClickerStateMapper;
 import com.clicker.models.TemporaryClickerStateEntity;
 import com.clicker.repository.InMemoryClickerStateRepository;
 import lombok.RequiredArgsConstructor;

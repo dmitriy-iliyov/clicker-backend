@@ -7,7 +7,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.clicker")
 @EnableTransactionManagement
 @EnableJpaRepositories
 @EnableAsync
