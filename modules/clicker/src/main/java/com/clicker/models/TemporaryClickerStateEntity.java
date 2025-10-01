@@ -9,7 +9,7 @@ import java.util.UUID;
 @RedisHash(value = "clicker:states:tmp")
 public record TemporaryClickerStateEntity(
         @Id
-        UUID userId,
+        String userId,
         Float probability,
         Integer clicksCount,
         @TimeToLive

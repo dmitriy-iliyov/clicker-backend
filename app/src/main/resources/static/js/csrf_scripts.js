@@ -1,5 +1,5 @@
 function get_csrf() {
-    return fetch('/csrf')
+    return fetch('/api/csrf')
         .then(response => {
             if (response.ok) {
                 return response.json();

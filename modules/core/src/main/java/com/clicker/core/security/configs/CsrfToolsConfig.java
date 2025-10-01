@@ -1,4 +1,4 @@
-package com.clicker.core.security.configs.csrf;
+package com.clicker.core.security.configs;
 
 import com.clicker.core.security.csrf.CsrfTokenMasker;
 import com.clicker.core.security.csrf.CsrfTokenMaskerImpl;
@@ -20,7 +20,7 @@ public class CsrfToolsConfig {
                 .domain(null)
                 .httpOnly(true)
                 .secure(true)
-                .sameSite("Strict")
+                .sameSite("None")
                 .build());
         return csrfTokenRepository;
     }

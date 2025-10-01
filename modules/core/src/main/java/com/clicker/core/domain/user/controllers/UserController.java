@@ -1,10 +1,10 @@
 package com.clicker.core.domain.user.controllers;
 
 
+import com.clicker.auth.TokenUserDetails;
 import com.clicker.core.domain.user.UserFacade;
 import com.clicker.core.domain.user.models.dto.*;
 import com.clicker.core.messaging.confirmation.ConfirmationService;
-import com.clicker.core.security.core.models.token.models.TokenUserDetails;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -30,7 +30,7 @@ import java.util.Random;
 )
 @Slf4j
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/users")
 @RequiredArgsConstructor
 public class UserController {
 

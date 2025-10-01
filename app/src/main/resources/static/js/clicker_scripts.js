@@ -1,48 +1,42 @@
+let socket;
+
 async function buttonClicked() {
-    const url = '/clicker';
+    if (!socket || socket.readyState === WebSocket.CLOSED) {
+        socket = new WebSocket("wss://localhost:8446/api/clicker");
 
-    const csrfToken = await get_csrf()
+        socket.onopen = () => {
+            console.log("WebSocket connection opened");
+            socket.send("click")
+        };
 
-    const options = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-XSRF-TOKEN': csrfToken
-        },
-        body: JSON.stringify({ 'message': 'Button clicked' })
-    };
+        socket.onmessage = (event) => {
+            try {
+                const data = JSON.parse(event.data);
+                const clicks = data.clicksCount;
+                const probability = data.probability;
+                updateUI(clicks, probability);
+            } catch (e) {
+                console.error("Parse error:", e, event.data);
+            }
+        };
 
-    try {
-        fetch(url, options)
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-            })
-            .then(response_data => {
-                if (response_data && typeof response_data.probability === 'number') {
-                    updateUI(response_data.probability);
-                } else {
-                    console.warn("Unexpected response format:", response_data);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-    } catch (error) {
-        console.error("Error submitting form:", error);
+        socket.onerror = (error) => {
+            console.error("WebSocket error:", error);
+        };
+
+        socket.onclose = () => {
+            console.log("WebSocket connection closed");
+        };
+    } else {
+        socket.send("click")
     }
 }
 
-function updateUI(probability) {
+function updateUI(counter, probability) {
     if (probability === 100) {
-        counter = 0;
         clickCountContent.textContent = `${counter}/1000`;
         probabilityContent.textContent = '100%';
     } else {
-        counter++;
         clickCountContent.textContent = `${counter}/1000`;
         probabilityContent.textContent = `${probability}%`;
     }

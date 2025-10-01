@@ -87,11 +87,8 @@ public class WalletsServiceImpl implements WalletsService {
         FullWalletResponseDto fullWalletResponseDto = walletsRepository.findFullById(id).orElseThrow(
                 WalletNotFoundException::new
         );
-
         WalletToken walletToken = walletTokenFactory.generateToken(fullWalletResponseDto);
-        System.out.println(walletToken);
         String walletJwt = walletTokenSerializer.serialize(walletToken);
-
         Cookie cookie = new Cookie("__Host-main_wallet", walletJwt);
         cookie.setPath("/");
         cookie.setHttpOnly(true);
@@ -99,7 +96,6 @@ public class WalletsServiceImpl implements WalletsService {
         cookie.setAttribute("SameSite", "Strict");
         response.addCookie(cookie);
     }
-
 
     @Transactional
     @Override

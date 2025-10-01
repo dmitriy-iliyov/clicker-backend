@@ -5,6 +5,9 @@ import com.clicker.models.ClickerStateEntity;
 import com.clicker.models.ClickerStateMapper;
 import com.clicker.repository.PermanentClickerStateRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,6 +15,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class PermanentClickerStateServiceImpl implements PermanentClickerStateService {
 
     private final PermanentClickerStateRepository repository;
@@ -29,7 +33,7 @@ public class PermanentClickerStateServiceImpl implements PermanentClickerStateSe
         repository.save(entity);
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     @Override
     public ClickerStateDto findByUserId(UUID userId) {
         ClickerStateEntity entity = repository.findById(userId).orElse(null);

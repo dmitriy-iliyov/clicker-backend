@@ -16,7 +16,6 @@ public class JwtNCsrfSessionAuthenticationStrategy implements SessionAuthenticat
     private final CookieJwtSessionAuthenticationStrategy cookieJwtSessionAuthenticationStrategy;
     private final CsrfTokenSessionAuthenticationStrategy csrfTokenAuthenticationStrategy;
 
-
     @Override
     public void onAuthentication(Authentication authentication, HttpServletRequest request, HttpServletResponse response) throws SessionAuthenticationException {
         cookieJwtSessionAuthenticationStrategy.onAuthentication(authentication, request, response);

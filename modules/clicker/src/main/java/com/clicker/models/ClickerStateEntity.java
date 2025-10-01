@@ -19,7 +19,7 @@ public class ClickerStateEntity {
     private UUID id;
 
     @Column(name = "probability", nullable = false)
-    private Float probability = 1F;
+    private Float probability;
 
     @Column(name = "clicks_count", nullable = false)
     private Integer clicksCount;
@@ -32,6 +32,8 @@ public class ClickerStateEntity {
 
     public ClickerStateEntity(UUID id) {
         this.id = id;
+        this.probability = 1F;
+        this.clicksCount = 0;
     }
 
     @PrePersist

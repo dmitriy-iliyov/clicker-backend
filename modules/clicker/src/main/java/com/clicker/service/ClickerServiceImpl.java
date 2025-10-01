@@ -13,33 +13,38 @@ public class ClickerServiceImpl implements ClickerService {
 
     private static final float PROBABILITY = 100.0f;
     private static final float DECREASE_STEP = 0.1f;
-    private final ClickerStateService clickerStateService;
+    private final ClickerStateService stateService;
 
     @Override
     public ClickerStateDto loadClickerData(UUID userId) {
-        return clickerStateService.findByUserId(userId);
+        return stateService.findByUserId(userId);
     }
     
     @Override
-    public float click(UUID userId) {
+    public ClickerStateDto click(UUID userId) {
         float factor = (float) Math.pow(10, 1);
         float currentRandomProbability = Math.round(new SecureRandom().nextFloat() * 100 * factor) / factor;
-        Float lastUserProbability = clickerStateService.findProbabilityByUserId(userId);
-        if (lastUserProbability == null) {
-            lastUserProbability = PROBABILITY;
+        ClickerStateDto dto = stateService.findByUserId(userId);
+        System.out.println(dto);
+        Float lastProbability = dto.probability();
+        int clickCount = dto.clicksCount();
+        if (lastProbability == null) {
+            lastProbability = PROBABILITY;
         }
-        if(currentRandomProbability < lastUserProbability) {
-            lastUserProbability = lastUserProbability - DECREASE_STEP;
+        if(currentRandomProbability < lastProbability) {
+            lastProbability = lastProbability - DECREASE_STEP;
+            clickCount += 1;
         } else {
-            lastUserProbability = PROBABILITY;
+            lastProbability = PROBABILITY;
+            clickCount = 0;
         }
-        lastUserProbability = Math.round(lastUserProbability * factor) / factor;
-        clickerStateService.update(userId, lastUserProbability);
-        return lastUserProbability;
+        lastProbability = Math.round(lastProbability * factor) / factor;
+        stateService.update(userId, lastProbability, clickCount);
+        return new ClickerStateDto(userId, lastProbability, clickCount);
     }
 
     @Override
     public void saveClickerData(UUID userId) {
-        clickerStateService.save(userId);
+        stateService.save(userId);
     }
 }

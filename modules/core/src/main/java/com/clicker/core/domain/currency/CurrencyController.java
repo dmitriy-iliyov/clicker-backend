@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/currencies")
+@RequestMapping("/api/admin/currencies")
 @PreAuthorize("hasAuthority('ROLE_ADMIN')")
 public class CurrencyController {
 

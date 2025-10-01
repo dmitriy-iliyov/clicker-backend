@@ -1,11 +1,11 @@
 package com.clicker.core.security.configs;
 
 
+import com.clicker.auth.TokenDeserializer;
+import com.clicker.auth.TokenDeserializerImpl;
 import com.clicker.core.domain.user.UserFacade;
 import com.clicker.core.security.core.models.token.factory.TokenFactory;
 import com.clicker.core.security.core.models.token.factory.TokenFactoryImpl;
-import com.clicker.core.security.core.models.token.serializing.TokenDeserializer;
-import com.clicker.core.security.core.models.token.serializing.TokenDeserializerImpl;
 import com.clicker.core.security.core.models.token.serializing.TokenSerializer;
 import com.clicker.core.security.core.models.token.serializing.TokenSerializerImpl;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +21,6 @@ public class TokenToolsConfig {
 
     @Value("${clicker.api.auth.jwt.secret}")
     private String SECRET;
-
 
     @Bean
     public TokenSerializer tokenSerializer(){

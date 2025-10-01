@@ -7,9 +7,7 @@ import java.util.UUID;
 public interface ClickerStateService {
     void save(UUID userId);
 
-    void update(UUID userId, Float probability);
+    void update(UUID userId, float probability, int clickCount);
 
     ClickerStateDto findByUserId(UUID userId);
-
-    Float findProbabilityByUserId(UUID userId);
 }

@@ -9,12 +9,17 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class LettuceStatefulConfig {
 
-    @Value("${}")
-    private String URI;
+    @Value("${spring.data.redis.host}")
+    private String host;
+
+    @Value("${spring.data.redis.port}")
+    private Integer port;
+
+    private final String URL_TEMPLATE = "redis://%s:%s";
 
     @Bean(destroyMethod = "close")
     public RedisClient redisClient() {
-        return RedisClient.create(URI);
+        return RedisClient.create(URL_TEMPLATE.formatted(host, port));
     }
 
     @Bean(destroyMethod = "close")

@@ -1,9 +1,9 @@
 package com.clicker.core.domain.wallets;
 
 
+import com.clicker.auth.TokenUserDetails;
 import com.clicker.core.domain.wallets.models.dto.WalletCreateDto;
 import com.clicker.core.domain.wallets.models.dto.WalletUpdateDto;
-import com.clicker.core.security.core.models.token.models.TokenUserDetails;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/users/me/wallets")
+@RequestMapping("/api/users/me/wallets")
 @PreAuthorize("hasAuthority('ROLE_USER')")
 public class WalletController {
 

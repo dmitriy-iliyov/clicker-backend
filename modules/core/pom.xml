@@ -13,11 +13,19 @@
     <artifactId>core</artifactId>
 
     <dependencies>
+
         <dependency>
             <groupId>com.clicker</groupId>
             <artifactId>exceptions</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.clicker</groupId>
+            <artifactId>auth</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
         <dependency>
             <groupId>com.clicker</groupId>
             <artifactId>utils</artifactId>

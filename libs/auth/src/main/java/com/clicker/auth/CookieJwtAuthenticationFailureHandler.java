@@ -1,4 +1,4 @@
-package com.clicker.core.security.core.handlers.jwt_authentication;
+package com.clicker.auth;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

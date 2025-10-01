@@ -10,7 +10,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,17 +23,11 @@ import java.net.URI;
 )
 @Log4j2
 @Controller
-@RequestMapping("/confirm")
+@RequestMapping("/api/confirmation")
 @RequiredArgsConstructor
 public class ConfirmationController {
 
     private final ConfirmationService confirmationService;
-
-    // delete in future
-    @GetMapping("/email/**")
-    private String getConfirmingPage(){
-        return "email_confirmation";
-    }
 
     @Operation(summary = "Confirm user email by token")
     @PostMapping("/email")
@@ -42,7 +35,7 @@ public class ConfirmationController {
                                                @RequestParam("token") String token) {
         confirmationService.validateConfirmationToken(token);
         HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.setLocation(URI.create("/users/login"));
+        httpHeaders.setLocation(URI.create("/ui/users/login"));
         return ResponseEntity
                 .status(HttpStatus.SEE_OTHER)
                 .headers(httpHeaders)

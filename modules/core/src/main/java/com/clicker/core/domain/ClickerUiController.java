@@ -1,4 +1,4 @@
-package com.clicker;
+package com.clicker.core.domain;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -7,13 +7,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/clicker")
+@RequestMapping("/ui/clicker")
+@PreAuthorize("hasAuthority('ROLE_USER')")
 @RequiredArgsConstructor
 public class ClickerUiController {
 
-    @Deprecated(forRemoval = true)
     @GetMapping
-    @PreAuthorize("hasAuthority('ROLE_USER')")
     public String clickerForm() {
         return "clicker";
     }

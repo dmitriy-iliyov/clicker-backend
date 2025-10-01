@@ -7,4 +7,7 @@ public record ClickerStateDto(
         Float probability,
         Integer clicksCount
 ) {
+    public String toJson() {
+        return "{\"userId\": \"%s\",\"clicksCount\": %d,\"probability\": %.2f}".formatted(userId, clicksCount, probability);
+    }
 }

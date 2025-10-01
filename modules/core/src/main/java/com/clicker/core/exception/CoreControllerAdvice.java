@@ -1,5 +1,6 @@
 package com.clicker.core.exception;
 
+import com.clicker.auth.CookieJwtExpiredException;
 import com.clicker.contracts.exceptions.ErrorUtils;
 import com.clicker.contracts.exceptions.dto.ErrorDto;
 import com.clicker.contracts.exceptions.dto.ExceptionResponseDto;
@@ -216,7 +217,7 @@ public class CoreControllerAdvice {
                 .body(problemDetail);
     }
 
-    @ExceptionHandler(CookieJwtExpired.class)
+    @ExceptionHandler(CookieJwtExpiredException.class)
     public HttpServletResponse handleCookieJwtExpired(HttpServletResponse response) throws IOException {
         response.sendRedirect("/users/login");
         return response;

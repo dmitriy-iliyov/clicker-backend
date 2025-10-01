@@ -9,7 +9,7 @@ document.getElementById('confirmButton').addEventListener('click', async () => {
         return;
     }
 
-    const url = `/confirm/email?token=${token}`;
+    const url = `/ui/confirmation/email?token=${token}`;
     const messageElement = document.getElementById('message');
 
     try {

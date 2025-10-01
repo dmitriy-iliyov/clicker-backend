@@ -43,9 +43,10 @@ public class MapperUtils {
 
     @Named("generateUsernameIfEmpty")
     public String generateUsernameIfEmpty(String username) {
-        if (!username.isBlank()) {
+        if (username != null && !username.isBlank()) {
             return username;
         }
         return "User" + UUID.randomUUID();
     }
+    //passwordqwerty
 }

@@ -1,9 +1,5 @@
-package com.clicker.core.security.core;
+package com.clicker.auth;
 
-import com.clicker.core.security.core.handlers.jwt_authentication.CookieJwtAuthenticationFailureHandler;
-import com.clicker.core.security.core.handlers.jwt_authentication.CookieJwtAuthenticationSuccessHandler;
-import com.clicker.core.security.core.models.token.DeactivateTokenServices;
-import com.clicker.core.security.core.models.token.serializing.TokenDeserializer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.SecurityConfigurer;
@@ -17,8 +13,8 @@ import org.springframework.security.web.csrf.CsrfFilter;
 @RequiredArgsConstructor
 public class CookieJwtAuthenticationFilterConfigurer implements SecurityConfigurer<DefaultSecurityFilterChain, HttpSecurity>{
 
-    private final static String FAILURE_AUTHENTICATION_URL = "/users/login";
-    private final DeactivateTokenServices deactivateTokenServices;
+    private final static String FAILURE_AUTHENTICATION_URL = "/ui/users/login";
+    private final TokenUserDetailsService detailsService;
     private final TokenDeserializer tokenDeserializer;
 
     @Override
@@ -35,7 +31,7 @@ public class CookieJwtAuthenticationFilterConfigurer implements SecurityConfigur
         cookieAuthenticationFilter.setFailureHandler(new CookieJwtAuthenticationFailureHandler(FAILURE_AUTHENTICATION_URL));
 
         PreAuthenticatedAuthenticationProvider preAuthenticatedAuthenticationProvider = new PreAuthenticatedAuthenticationProvider();
-        preAuthenticatedAuthenticationProvider.setPreAuthenticatedUserDetailsService(deactivateTokenServices);
+        preAuthenticatedAuthenticationProvider.setPreAuthenticatedUserDetailsService(detailsService);
         http.addFilterAfter(cookieAuthenticationFilter, CsrfFilter.class)
                 .authenticationProvider(preAuthenticatedAuthenticationProvider);
     }

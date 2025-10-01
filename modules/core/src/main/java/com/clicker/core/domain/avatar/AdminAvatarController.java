@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/avatar")
+@RequestMapping("/api/admin/avatar")
 @RequiredArgsConstructor
 public class AdminAvatarController {
 

@@ -1,4 +1,4 @@
-package com.clicker.core.security.core.models.token.models;
+package com.clicker.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,16 +1,12 @@
-package com.clicker.core.security.core.models.token.serializing;
+package com.clicker.auth;
 
-import com.clicker.core.exception.CookieJwtExpired;
-import com.clicker.core.security.core.models.token.models.Token;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwt;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.crypto.SecretKey;
 import java.time.Instant;
@@ -18,17 +14,15 @@ import java.util.List;
 import java.util.UUID;
 
 
-@Log4j2
 @Data
 @RequiredArgsConstructor
+@Slf4j
 public class TokenDeserializerImpl implements TokenDeserializer {
 
     private final String SECRET;
-    private final Logger logger = LoggerFactory.getLogger(TokenDeserializerImpl.class);
 
     @Override
     public Token deserialize(String inputJwt) {
-
         SecretKey key = Keys.hmacShaKeyFor(SECRET.getBytes());
         Jwt<?, ?> jwt;
         try {
@@ -43,19 +37,17 @@ public class TokenDeserializerImpl implements TokenDeserializer {
                 List<String> authorities = claims.get("authorities", List.class);
                 Instant issuedAt = claims.getIssuedAt().toInstant();
                 Instant expiresAt = claims.getExpiration().toInstant();
-
                 if (expiresAt != null) {
                     if (Instant.now().isBefore(expiresAt)) {
                         return new Token(id, subjectId, authorities, issuedAt, expiresAt);
                     }
-                    throw new CookieJwtExpired("Session expired");
                 }
-
+                throw new CookieJwtExpiredException("Session expired");
             }catch (Exception e){
-                logger.error("Exception when get claims and deserialize to Token: {}", e.getMessage());
+                log.error("Exception when get claims and deserialize to Token: {}", e.getMessage());
             }
         }catch (Exception e){
-            logger.error("Exception when check jwt signature: {}", e.getMessage());
+            log.error("Exception when check jwt signature: {}", e.getMessage());
         }
         return null;
     }

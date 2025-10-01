@@ -1,6 +1,6 @@
 package com.clicker.core.domain.avatar;
 
-import com.clicker.core.security.core.models.token.models.TokenUserDetails;
+import com.clicker.auth.TokenUserDetails;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 @RestController
-@RequestMapping("/avatar")
+@RequestMapping("/api/avatar")
 @RequiredArgsConstructor
 public class AvatarController {
 

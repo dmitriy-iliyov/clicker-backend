@@ -25,14 +25,14 @@ public class LuaClickerStateRepositoryImpl implements LuaClickerStateRepository 
     @Value("${clicker.api.success-click.probability.ttl.secs}")
     private long TTL;
     private final StatefulRedisConnection<String, String> statefulConnection;
-    private String SCRIPT_SHA;
+    private volatile String SCRIPT_SHA;
     private final String SCRIPT_TEMPLATE = "clicker:states:tmp:%s";
 
     @PostConstruct
-    public void loadScript() {
+    public synchronized void loadScript() {
         try {
             RedisCommands<String, String> redisCommands = statefulConnection.sync();
-            SCRIPT_SHA = redisCommands.scriptLoad(getScript().getBytes(StandardCharsets.UTF_8));
+            SCRIPT_SHA = redisCommands.scriptLoad(ScriptHolder.SCRIPT.getBytes(StandardCharsets.UTF_8));
         } catch (RedisConnectionFailureException e) {
             log.error("Failed connect to redis, ", e);
             throw e;
@@ -43,26 +43,23 @@ public class LuaClickerStateRepositoryImpl implements LuaClickerStateRepository 
     }
 
     @Override
-    public Boolean updateById(UUID userId, Float probability) {
+    public Boolean updateById(UUID userId, float probability, int clickCount) {
         try {
             String [] keys = {SCRIPT_TEMPLATE.formatted(userId)};
             return statefulConnection.sync().evalsha(
-                    SCRIPT_SHA, ScriptOutputType.BOOLEAN, keys, probability.toString(), String.valueOf(TTL)
+                    SCRIPT_SHA, ScriptOutputType.BOOLEAN, keys,
+                    userId.toString(), String.valueOf(probability), String.valueOf(clickCount), String.valueOf(TTL)
             );
-        } catch (RedisConnectionFailureException e) {
-            log.error("Failed connect to Redis, ", e);
-            throw e;
         } catch (RedisException e ) {
             log.error("Redis exception: ", e);
+            if (e.getMessage() != null && e.getMessage().contains("NOSCRIPT")) {
+                loadScript();
+            }
             throw e;
         } catch (RuntimeException e) {
             log.error("Error when updating clicker state, ", e);
             throw e;
         }
-    }
-
-    private static String getScript() {
-        return ScriptHolder.SCRIPT;
     }
 
     private static class ScriptHolder {

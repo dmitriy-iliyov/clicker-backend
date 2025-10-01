@@ -14,7 +14,7 @@ async function logoutFunc() {
             'X-XSRF-TOKEN': csrfToken
         }
     };
-    await fetch("/logout", options)
+    await fetch("/api/logout", options)
         .then(response => {
         if (response.ok) {
             if(response.redirected){
@@ -39,7 +39,7 @@ async function delAccountFunc() {
             'X-XSRF-TOKEN': csrfToken
         }
     };
-    await fetch("/users/user", options)
+    await fetch("/api/users/me", options)
         .then(response => {
             if (response.ok) {
                 if(response.redirected) {

@@ -20,32 +20,28 @@ public class ClickerStateServiceImpl implements ClickerStateService {
 
     @Override
     public void save(UUID userId) {
-        inMemoryRepository.findById(userId)
+        inMemoryRepository.findById(userId.toString())
                 .ifPresent(tmpEntity -> {
                     permanentService.save(mapper.toDto(tmpEntity));
-                    inMemoryRepository.deleteById(userId);
+                    inMemoryRepository.deleteById(userId.toString());
                 });
     }
 
     @Override
-    public void update(UUID userId, Float probability) {
-        if (!inMemoryRepository.updateById(userId, probability)) {
+    public void update(UUID userId, float probability, int clickCount) {
+        if (!inMemoryRepository.updateById(userId, probability, clickCount)) {
             throw new ClickProcessException();
         }
     }
 
     @Override
     public ClickerStateDto findByUserId(UUID userId) {
-        return permanentService.findByUserId(userId);
-    }
-
-    @Override
-    public Float findProbabilityByUserId(UUID userId) {
-        TemporaryClickerStateEntity tmpState = inMemoryRepository.findById(userId).orElse(null);
+        TemporaryClickerStateEntity tmpState = inMemoryRepository.findById(userId.toString()).orElse(null);
         if (tmpState == null) {
-            return permanentService.findByUserId(userId).probability();
+            ClickerStateDto dto = permanentService.findByUserId(userId);
+            tmpState = inMemoryRepository.save(mapper.toTmpEntity(dto));
         }
-        return tmpState.probability();
+        return mapper.toDto(tmpState);
     }
 }
 

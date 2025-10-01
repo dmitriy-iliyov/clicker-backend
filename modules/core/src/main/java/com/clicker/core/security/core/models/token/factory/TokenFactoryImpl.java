@@ -1,8 +1,8 @@
 package com.clicker.core.security.core.models.token.factory;
 
+import com.clicker.auth.Token;
 import com.clicker.core.domain.user.UserFacade;
 import com.clicker.core.domain.user.models.DefaultUserDetails;
-import com.clicker.core.security.core.models.token.models.Token;
 import com.github.f4b6a3.uuid.UuidCreator;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;

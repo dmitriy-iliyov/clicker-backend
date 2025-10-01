@@ -1,8 +1,8 @@
 package com.clicker.core.security.core.handlers.logout;
 
-import com.clicker.core.security.core.models.token.DeactivateTokenServices;
+import com.clicker.auth.TokenUserDetails;
+import com.clicker.core.security.core.models.token.DeactivateTokenService;
 import com.clicker.core.security.core.models.token.models.TokenEntity;
-import com.clicker.core.security.core.models.token.models.TokenUserDetails;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -14,12 +14,12 @@ import java.time.Instant;
 @RequiredArgsConstructor
 public class DeactivatingJwtLogoutHandler implements LogoutHandler {
 
-    private final DeactivateTokenServices deactivateTokenServices;
+    private final DeactivateTokenService tokenService;
 
     @Override
     public void logout(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
         if(authentication != null && authentication.getPrincipal() instanceof TokenUserDetails tokenUserDetails) {
-            deactivateTokenServices.save(new TokenEntity(tokenUserDetails.getToken().getId(), Instant.now()));
+            tokenService.deactivate(new TokenEntity(tokenUserDetails.getToken().getId(), Instant.now()));
         }
     }
 }

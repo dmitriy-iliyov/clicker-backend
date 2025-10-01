@@ -8,7 +8,7 @@ async function submitForm(event) {
     const password = document.querySelector('input[name="password"]').value;
 
 
-    fetch('/login', {
+    fetch('/api/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',

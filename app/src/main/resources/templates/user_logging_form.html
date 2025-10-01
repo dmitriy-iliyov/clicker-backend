@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<form id="loginForm" th:method="POST" th:action="@{/login}">
+<form id="loginForm" th:method="POST" th:action="@{/api/login}">
     <p>Logging in TipTap</p>
 
     <label>
@@ -21,12 +21,11 @@
     <button type="submit">Login</button>
 </form>
 <label>
-    <a href="user_pass_recovery_form.html">Forgot pass?</a>
+    <a href="/ui/password-recovery">Forgot pass?</a>
 </label>
 
 <div id="error-message" style="color: red; margin-top: 10px;"></div>
 
-<script src="/csrf_scripts.js"></script>
 <script src="/js/login_scripts.js"></script>
 
 </body>

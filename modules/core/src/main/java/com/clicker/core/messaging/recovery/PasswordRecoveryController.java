@@ -17,7 +17,7 @@ import java.util.Map;
         description = "Method to password recovery"
 )
 @RestController
-@RequestMapping("/password-recovery")
+@RequestMapping("/api/password-recovery")
 @RequiredArgsConstructor
 public class PasswordRecoveryController {
 

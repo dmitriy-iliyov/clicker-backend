@@ -1,12 +1,12 @@
 package com.clicker.core.security.configs;
 
 
-import com.clicker.core.security.core.CookieJwtAuthenticationFilterConfigurer;
+import com.clicker.auth.CookieJwtAuthenticationFilterConfigurer;
 import com.clicker.core.security.core.handlers.login.LoginAuthenticationFailureHandler;
 import com.clicker.core.security.core.handlers.login.LoginAuthenticationSuccessHandler;
 import com.clicker.core.security.core.handlers.logout.DeactivatingJwtLogoutHandler;
 import com.clicker.core.security.core.handlers.logout.LogoutSuccessHandlerImpl;
-import com.clicker.core.security.core.models.token.DeactivateTokenServices;
+import com.clicker.core.security.core.models.token.DeactivateTokenService;
 import com.clicker.core.security.xss.XssFilter;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -29,73 +29,49 @@ import org.springframework.security.web.header.writers.XXssProtectionHeaderWrite
 @EnableWebSecurity
 @EnableMethodSecurity
 @RequiredArgsConstructor
-public class SecurityChainConfig {
-
-    private static final String HEALTH_CHECK_URL = "/health";
-    private static final String USER_REGISTRATION_URL = "/users";
-    private static final String USER_LOGIN_URL = "/login";
-    private static final String GET_CSRF_TOKEN_URL = "/csrf";
-    private static final String CONFIRMING_URL = "/confirm/**";
-    private static final String PASSWORD_RECOVERING_URL = "/password-recovery/**";
-    private static final String USER_LOGOUT_URL = "/logout";
-
-    private static final String HOME_PAGE_URL = "/home";
-    private static final String USER_REGISTRATION_PAGE_URL = "/users/create";
-    private static final String USER_LOGIN_PAGE_URL = "/users/login";
-
-    private static final String [] NO_AUTH_PERMITTED_URL_LIST = {
-            HOME_PAGE_URL, USER_LOGIN_URL, USER_REGISTRATION_PAGE_URL, CONFIRMING_URL, PASSWORD_RECOVERING_URL, HEALTH_CHECK_URL,
-            "/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**",
-            //to del
-            "user_pass_recovery_form.html", "/test/**", "/currencies/**", "/users/**", HOME_PAGE_URL + "/**"
-    };
-    private static final String [] NO_CSRF_PERMITTED_URL_LIST = {
-            GET_CSRF_TOKEN_URL, USER_REGISTRATION_URL, USER_REGISTRATION_PAGE_URL, USER_LOGIN_URL, CONFIRMING_URL, PASSWORD_RECOVERING_URL,
-            "/test/**",  "/currencies/**", "/users/**"
-    };
+public class SecurityFilterChainConfig {
 
     private final LoginAuthenticationSuccessHandler loginAuthenticationSuccessHandler;
     private final CookieJwtAuthenticationFilterConfigurer cookieJwtAuthenticationConfigurer;
     private final CsrfTokenRepository csrfTokenRepository;
-    private final DeactivateTokenServices deactivateTokenServices;
-
+    private final DeactivateTokenService deactivateTokenService;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .formLogin(formLogin -> formLogin
-                        .loginProcessingUrl(USER_LOGIN_URL)
-                        .loginPage(USER_LOGIN_PAGE_URL)
+                        .loginProcessingUrl(UrlConfig.USER_LOGIN_URL)
+                        .loginPage(UrlConfig.USER_LOGIN_PAGE_URL)
                         .usernameParameter("email")
                         .passwordParameter("password")
                         .successHandler(loginAuthenticationSuccessHandler)
-                        .failureHandler(new LoginAuthenticationFailureHandler(USER_LOGIN_PAGE_URL))
+                        .failureHandler(new LoginAuthenticationFailureHandler(UrlConfig.USER_LOGIN_PAGE_URL))
                         .permitAll()
                 )
                 .logout(logout -> logout
-                        .logoutUrl(USER_LOGOUT_URL)
+                        .logoutUrl(UrlConfig.USER_LOGOUT_URL)
                         .addLogoutHandler(new CookieClearingLogoutHandler("__Host-auth_token", "XSRF-TOKEN"))
-                        .addLogoutHandler(new DeactivatingJwtLogoutHandler(deactivateTokenServices))
-                        .logoutSuccessHandler(new LogoutSuccessHandlerImpl(HOME_PAGE_URL))
+                        .addLogoutHandler(new DeactivatingJwtLogoutHandler(deactivateTokenService))
+                        .logoutSuccessHandler(new LogoutSuccessHandlerImpl(UrlConfig.HOME_PAGE_URL))
                 )
                 .exceptionHandling(exceptionHandling -> exceptionHandling
                         .authenticationEntryPoint((request, response, authException) -> {
                             response.setStatus(HttpServletResponse.SC_SEE_OTHER);
-                            response.setHeader("Location", USER_LOGIN_PAGE_URL);
+                            response.setHeader("Location", UrlConfig.USER_LOGIN_PAGE_URL);
                             response.setContentLength(0);
                         })
                 )
                 .addFilterAfter(new XssFilter(), CsrfFilter.class)
                 .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
-                        .requestMatchers(NO_AUTH_PERMITTED_URL_LIST).permitAll()
-                        .requestMatchers(HttpMethod.POST, USER_REGISTRATION_URL).permitAll()
+                        .requestMatchers(UrlConfig.NO_AUTH_PERMITTED_URL_LIST).permitAll()
+                        .requestMatchers(HttpMethod.POST, UrlConfig.USER_REGISTRATION_URL).permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(sessionManagement -> sessionManagement
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
                 .csrf(csrf -> csrf.csrfTokenRepository(csrfTokenRepository)
-                        .ignoringRequestMatchers(NO_CSRF_PERMITTED_URL_LIST)
+                        .ignoringRequestMatchers(UrlConfig.NO_CSRF_PERMITTED_URL_LIST)
                         .csrfTokenRequestHandler(new XorCsrfTokenRequestAttributeHandler())
                         .sessionAuthenticationStrategy(((authentication, request, response) -> {}))
                 )
@@ -115,5 +91,4 @@ public class SecurityChainConfig {
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.ignoring().requestMatchers("/css/**", "/js/**", "/images/**", "/static/**");
     }
-
 }

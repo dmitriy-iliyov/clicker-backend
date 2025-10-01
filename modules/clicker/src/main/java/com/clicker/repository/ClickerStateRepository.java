@@ -5,7 +5,7 @@ import java.util.Optional;
 public interface ClickerStateRepository<T, ID> {
     T save(T entity);
 
-    boolean existsByUserId(ID id);
+    boolean existsById(ID id);
 
     Optional<T> findById(ID id);
 

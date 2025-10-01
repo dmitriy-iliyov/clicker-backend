@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface InMemoryClickerStateRepository extends KeyValueRepository<TemporaryClickerStateEntity, UUID>,
-                                                        ClickerStateRepository<TemporaryClickerStateEntity, UUID>,
+public interface InMemoryClickerStateRepository extends KeyValueRepository<TemporaryClickerStateEntity, String>,
+                                                        ClickerStateRepository<TemporaryClickerStateEntity, String>,
                                                         LuaClickerStateRepository {
 }

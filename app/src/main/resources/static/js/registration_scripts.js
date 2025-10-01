@@ -20,7 +20,7 @@ async function submitForm(event) {
             const errorData = await response.json();
             displayErrors(errorData);
         } else {
-            window.location.href = "/users/login";
+            window.location.href = "/ui/users/login";
         }
     } catch (error) {
         console.error("Error submitting form:", error);

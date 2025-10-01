@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Log4j2
 @RestController
-@RequestMapping("/csrf")
+@RequestMapping("/api/csrf")
 @RequiredArgsConstructor
 public class CsrfTokenController {
 
