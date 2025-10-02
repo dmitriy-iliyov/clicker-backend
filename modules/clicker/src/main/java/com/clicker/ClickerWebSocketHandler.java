@@ -1,7 +1,6 @@
 package com.clicker;
 
 import com.clicker.auth.TokenUserDetails;
-import com.clicker.models.ClickerStateDto;
 import com.clicker.security.WebSocketTokenFilter;
 import com.clicker.service.ClickerService;
 import lombok.RequiredArgsConstructor;

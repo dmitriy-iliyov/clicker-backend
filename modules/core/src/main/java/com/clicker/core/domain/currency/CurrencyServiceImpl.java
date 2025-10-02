@@ -23,7 +23,6 @@ public class CurrencyServiceImpl implements CurrencyService {
     private final CurrencyMapper currencyMapper;
     private final FullCurrencyMapper fullCurrencyMapper;
 
-
     @Transactional
     @Override
     public void save(CurrencyCreateDto currencyCreateDto) {
@@ -51,7 +50,6 @@ public class CurrencyServiceImpl implements CurrencyService {
         return currencyMapper.toResponseDto(currencyEntity);
     }
 
-    //vulnerability
     @Transactional(readOnly = true)
     @Override
     public CurrencyEntity findEntityById(Long id) {
@@ -77,7 +75,6 @@ public class CurrencyServiceImpl implements CurrencyService {
     @Transactional
     @Override
     public CurrencyResponseDto updateByAdminPassword(String password, CurrencyUpdateDto currencyUpdateDto) {
-        // check admin password
         CurrencyEntity currencyEntity = currencyRepository.findById(currencyUpdateDto.getId()).orElseThrow(
                 CurrencyNotFoundByIdException::new
         );
@@ -95,7 +92,6 @@ public class CurrencyServiceImpl implements CurrencyService {
     @Transactional
     @Override
     public void deleteByAdminPasswordAndId(String password, Long id) {
-        // check admin password
         currencyRepository.deleteById(id);
     }
 }

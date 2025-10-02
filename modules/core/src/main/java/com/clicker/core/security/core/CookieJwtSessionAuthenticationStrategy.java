@@ -31,11 +31,9 @@ public class CookieJwtSessionAuthenticationStrategy implements SessionAuthentica
                                  HttpServletResponse response) throws SessionAuthenticationException {
 
         if (authentication instanceof UsernamePasswordAuthenticationToken) {
-
             Token token = tokenFactory.generateToken(authentication);
             activeTokenService.activate(token.getId(), Duration.between(Instant.now(), token.getExpiresAt()));
             String jwt = tokenSerializer.serialize(token);
-
             Cookie cookie = new Cookie("__Host-auth_token", jwt);
             cookie.setPath("/");
             cookie.setDomain(null);
@@ -43,7 +41,6 @@ public class CookieJwtSessionAuthenticationStrategy implements SessionAuthentica
             cookie.setHttpOnly(true);
             cookie.setAttribute("SameSite", "None");
             cookie.setMaxAge((int) ChronoUnit.SECONDS.between(Instant.now(), token.getExpiresAt()));
-
             response.addCookie(cookie);
         }
     }

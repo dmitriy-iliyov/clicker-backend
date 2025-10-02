@@ -18,6 +18,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.logout.CookieClearingLogoutHandler;
 import org.springframework.security.web.csrf.CsrfFilter;
@@ -38,6 +39,8 @@ public class SecurityFilterChainConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        CookieClearingLogoutHandler cookieClearingLogoutHandler =
+                new CookieClearingLogoutHandler("__Host-auth_token", "XSRF-TOKEN");
         http
                 .formLogin(formLogin -> formLogin
                         .loginProcessingUrl(UrlConfig.USER_LOGIN_URL)
@@ -50,12 +53,14 @@ public class SecurityFilterChainConfig {
                 )
                 .logout(logout -> logout
                         .logoutUrl(UrlConfig.USER_LOGOUT_URL)
-                        .addLogoutHandler(new CookieClearingLogoutHandler("__Host-auth_token", "XSRF-TOKEN"))
+                        .addLogoutHandler(cookieClearingLogoutHandler)
                         .addLogoutHandler(new DeactivatingJwtLogoutHandler(deactivateTokenService))
                         .logoutSuccessHandler(new LogoutSuccessHandlerImpl(UrlConfig.HOME_PAGE_URL))
                 )
                 .exceptionHandling(exceptionHandling -> exceptionHandling
                         .authenticationEntryPoint((request, response, authException) -> {
+                            cookieClearingLogoutHandler.logout(request, response,
+                                    SecurityContextHolder.getContext().getAuthentication());
                             response.setStatus(HttpServletResponse.SC_SEE_OTHER);
                             response.setHeader("Location", UrlConfig.USER_LOGIN_PAGE_URL);
                             response.setContentLength(0);
