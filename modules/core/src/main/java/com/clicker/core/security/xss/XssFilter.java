@@ -7,13 +7,20 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Set;
 
 
 public class XssFilter extends OncePerRequestFilter {
 
+    private final Set<String> METHODS_TO_SANITIZE = Set.of("POST", "PUT", "PATCH");
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        filterChain.doFilter(new XssHttRequestWrapper(request), response);
+        if (!METHODS_TO_SANITIZE.contains(request.getMethod().toUpperCase())) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+        filterChain.doFilter(new XssHttpRequestWrapper(request), response);
     }
-
 }
