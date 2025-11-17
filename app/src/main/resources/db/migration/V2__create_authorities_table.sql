@@ -1,0 +1,13 @@
+CREATE SEQUENCE a_seq
+    START 1
+    INCREMENT 1
+    MINVALUE 1
+    NO MAXVALUE
+    CACHE 1;
+
+CREATE TYPE authority_t AS ENUM('ROLE_UNCONFIRMED_USER', 'ROLE_USER', 'ROLE_ADMIN');
+
+CREATE TABLE authorities(
+    id BIGINT PRIMARY KEY,
+    authority authority_t NOT NULL UNIQUE
+);
