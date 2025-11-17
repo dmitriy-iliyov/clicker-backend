@@ -21,11 +21,10 @@ import java.util.Set;
 public class CurrencyEntity {
 
     @Id
-    @SequenceGenerator(name = "c_seq", sequenceName = "c_seq", allocationSize = 20)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "c_seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "code", nullable = false, unique = true, length = 10)
+    @Column(name = "code", nullable = false, unique = true, length = 50)
     private String code;
 
     @Column(name = "created_at", nullable = false, updatable = false)

@@ -1,22 +1,6 @@
 version: "3.8"
-name: clicker-backend-infrastructure
+name: clicker-core-backend-infrastructure
 services:
-#    web_clicker:
-#      networks:
-#        - default
-#      container_name: web_clicker
-#      build:
-#        context: .
-#        dockerfile: Dockerfile
-#      environment:
-#        - PORT=8080
-#        - POSTGRES_USER=admin
-#        - POSTGRES_PASS=root
-#        - POSTGRES_DB=database
-#        - POSTGRES_URL=jdbc:postgresql://db:5432/database
-#      ports:
-#        - 8443:8443
-
     postgresql:
       image: postgres:16.1-alpine3.19
       networks:
@@ -26,7 +10,7 @@ services:
         POSTGRES_USER: admin
         POSTGRES_DB: database
       ports:
-        - 5432:5432
+        - "5432:5432"
 
     redis:
       image: redis

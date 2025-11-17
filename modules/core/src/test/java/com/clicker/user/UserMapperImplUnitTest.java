@@ -1,4 +1,4 @@
-package com.example.clicker.user;
+package com.clicker.user;
 
 //@ExtendWith(MockitoExtension.class)
 //public class UserMapperImplUnitTest {

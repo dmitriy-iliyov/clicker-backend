@@ -1,6 +1,6 @@
 CREATE TABLE user_authority(
     user_id UUID NOT NULL,
-    authority_id UUID NOT NULL,
+    authority_id BIGINT NOT NULL,
     PRIMARY KEY (user_id, authority_id),
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (authority_id) REFERENCES authorities(id)

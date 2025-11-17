@@ -14,8 +14,7 @@ import lombok.NoArgsConstructor;
 public class AuthorityEntity {
 
     @Id
-    @SequenceGenerator(name = "a_seq", sequenceName = "a_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "a_seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Enumerated(EnumType.STRING)

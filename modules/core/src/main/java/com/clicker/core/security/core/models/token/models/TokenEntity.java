@@ -15,7 +15,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "deactivated_auth_token")
+@Table(name = "deactivated_tokens")
 public class TokenEntity {
 
     @Id

@@ -19,15 +19,15 @@ import java.util.Objects;
 public class WalletEntity {
 
     @Id
-    @SequenceGenerator(sequenceName = "w_seq", name = "w_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "w_seq")
+    @SequenceGenerator(sequenceName = "wallets_seq", name = "wallets_seq", allocationSize = 20)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "wallets_seq")
     private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "currency_id", nullable = false)
     private CurrencyEntity currency;
 
-    @Column(name = "address", nullable = false, length = 100)
+    @Column(name = "address", nullable = false)
     private String address;
 
     @Column(name = "created_at", nullable = false, updatable = false)

@@ -13,7 +13,7 @@ import java.util.*;
 
 
 @Data
-@ToString(exclude = {"wallets", "authorities"}, callSuper = true)
+@ToString(exclude = {"wallets", "authorities"})
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -29,11 +29,8 @@ public class UserEntity {
     @Column(name = "username", nullable = false, unique = true, length = 50)
     private String username;
 
-    @Column(name = "password", nullable = false, length = 80)
+    @Column(name = "password", nullable = false)
     private String password;
-
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private Instant createdAt;
 
     @Column(name = "profile_picture_url")
     private String profilePictureUrl;
@@ -41,8 +38,11 @@ public class UserEntity {
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private Set<WalletEntity> wallets = new HashSet<>();
 
-    @Column(name = "updated_at", nullable = false)
-    private Instant updatedAt;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_authority",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "authority_id"))
+    private List<AuthorityEntity> authorities = new ArrayList<>();
 
     @Column(name = "is_expired", nullable = false)
     private boolean isExpired;
@@ -50,11 +50,11 @@ public class UserEntity {
     @Column(name = "is_locked", nullable = false)
     private boolean isLocked;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "user_authority",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "authority_id"))
-    private List<AuthorityEntity> authorities = new ArrayList<>();
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private Instant createdAt;
+
+    @Column(name = "updated_at", nullable = false)
+    private Instant updatedAt;
 
     public UserEntity(UUID id, String email, String password, AuthorityEntity authorityEntity) {
         this.id = id;
