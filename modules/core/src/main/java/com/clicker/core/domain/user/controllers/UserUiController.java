@@ -2,7 +2,7 @@ package com.clicker.core.domain.user.controllers;
 
 import com.clicker.auth.TokenUserDetails;
 import com.clicker.core.domain.user.UserFacade;
-import com.clicker.core.domain.user.models.dto.UserRegistrationDto;
+import com.clicker.core.domain.user.models.dto.UserRegistrationRequest;
 import com.clicker.core.domain.user.models.dto.UserResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -21,7 +21,7 @@ public class UserUiController {
 
     @GetMapping("/create")
     public String getCreateForm(Model model) {
-        model.addAttribute("user", new UserRegistrationDto());
+        model.addAttribute("user", new UserRegistrationRequest());
         return "user_registration_form";
     }
 

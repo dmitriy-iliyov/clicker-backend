@@ -10,6 +10,6 @@ public record UserResponseDto(
         String email,
         String username,
         Set<WalletResponseDto> wallets,
-        String profilePictureUrl,
+        String avatarUrl,
         String createdAt
 ) { }

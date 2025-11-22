@@ -1,32 +1,26 @@
 package com.clicker.core.domain.user;
 
 import com.clicker.core.domain.user.models.dto.*;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.UUID;
 
 public interface UserFacade {
 
-    void save(UserRegistrationDto userRegistrationDto);
+    void save(UserRegistrationRequest userRegistrationRequest);
 
     void confirmByEmail(String email);
 
-    UserResponseDto update(UUID id, UserUpdateDto userUpdateDto);
+    UserResponseDto update(UUID id, UserUpdateRequest userUpdateRequest, MultipartFile avatar);
 
     void updatePassword(String email, String password);
 
-    SystemUserDto systemFindByEmail(String email);
-
-    SystemUserDto systemFindById(UUID id);
-
     UserResponseDto findById(UUID id);
 
-    PagedDataDto<PublicUserResponseDto> findAll(UserFilterDto filter, PageRequest pageRequest);
+    PageDto<PublicUserResponseDto> findAll(DefaultUserFilter filter);
 
     void deleteById(UUID id);
 
     void deleteByPassword(UUID id, String password) throws BadCredentialsException;
-
-    SystemUserDto systemFindByUsername(String username);
 }

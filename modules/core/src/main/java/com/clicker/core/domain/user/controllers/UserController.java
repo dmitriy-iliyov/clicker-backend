@@ -10,18 +10,14 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.PositiveOrZero;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Random;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @Tag(
@@ -40,9 +36,9 @@ public class UserController {
     @Operation(description = "Create user")
     @PostMapping
     public ResponseEntity<String> create(@Parameter(description = "user")
-                                        @RequestBody @Valid UserRegistrationDto userRegistrationDto) {
-        facade.save(userRegistrationDto);
-        confirmationService.sendConfirmationMessage(userRegistrationDto.getEmail());
+                                        @RequestBody @Valid UserRegistrationRequest request) {
+        facade.save(request);
+        confirmationService.sendConfirmationMessage(request.getEmail());
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(
@@ -61,8 +57,9 @@ public class UserController {
     @PutMapping("/me/no-body")
     @PreAuthorize("hasAuthority('ROLE_USER')")
     public ResponseEntity<?> update(@AuthenticationPrincipal TokenUserDetails tokenUserDetails,
-                                    @RequestBody UserUpdateDto userUpdateDto) {
-        facade.update(tokenUserDetails.getUserId(), userUpdateDto);
+                                    @RequestParam("user") UserUpdateRequest request,
+                                    @RequestParam("avatar") MultipartFile avatar) {
+        facade.update(tokenUserDetails.getUserId(), request, avatar);
         return ResponseEntity
                 .status(HttpStatus.NO_CONTENT)
                 .build();
@@ -71,30 +68,17 @@ public class UserController {
     @PutMapping("/me")
     @PreAuthorize("hasAuthority('ROLE_USER')")
     public ResponseEntity<?> updateWithReturn(@AuthenticationPrincipal TokenUserDetails tokenUserDetails,
-                                              @RequestBody UserUpdateDto userUpdateDto) {
+                                              @RequestParam("user") UserUpdateRequest request,
+                                              @RequestParam("avatar") MultipartFile avatar) {
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(facade.update(tokenUserDetails.getUserId(), userUpdateDto));
+                .body(facade.update(tokenUserDetails.getUserId(), request, avatar));
     }
 
     @Operation(description = "Get all users")
     @GetMapping
-    public ResponseEntity<?> getAll(@RequestParam(value = "filter", required = false) UserFilterDto filter,
-                                    @RequestParam(value = "page", defaultValue = "0")
-                                    @PositiveOrZero(message = "Page should be positive!") int page,
-                                    @RequestParam(value = "size", defaultValue = "10")
-                                    @Positive(message = "Size should be positive!") int size) {
-        PagedDataDto<PublicUserResponseDto> users = facade.findAll(filter, PageRequest.of(page, size));
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(users);
-    }
-
-    @Deprecated(forRemoval = true)
-    @GetMapping("/random")
-    public ResponseEntity<?> getAllRandom() {
-        Random random = new Random();
-        PagedDataDto<PublicUserResponseDto> users = facade.findAll(new UserFilterDto("username"), PageRequest.of(random.nextInt(11), random.nextInt(1, 11)));
+    public ResponseEntity<?> getAll(@ModelAttribute DefaultUserFilter filter) {
+        PageDto<PublicUserResponseDto> users = facade.findAll(filter);
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(users);

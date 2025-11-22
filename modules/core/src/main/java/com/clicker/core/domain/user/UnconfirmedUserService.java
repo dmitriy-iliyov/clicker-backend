@@ -1,19 +1,23 @@
 package com.clicker.core.domain.user;
 
-import com.clicker.core.domain.user.models.dto.SystemUserDto;
-import com.clicker.core.domain.user.models.dto.UserRegistrationDto;
+import com.clicker.core.domain.user.models.dto.UserDto;
+import com.clicker.core.domain.user.models.dto.UserRegistrationRequest;
+
+import java.util.Optional;
 
 public interface UnconfirmedUserService {
 
-    void save(UserRegistrationDto userRegistrationDto);
+    void save(UserRegistrationRequest userRegistrationRequest);
 
     boolean existsByEmail(String email);
 
-    SystemUserDto systemFindByEmail(String email);
+    Optional<UserDto> systemFindByEmail(String email);
+
+    UserDto findByEmail(String email);
 
     void deleteByEmail(String email);
 
     boolean existsByUsername(String username);
 
-    SystemUserDto systemFindByUsername(String username);
+    Optional<UserDto> systemFindByUsername(String username);
 }

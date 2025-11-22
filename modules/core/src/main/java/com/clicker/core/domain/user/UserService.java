@@ -8,12 +8,13 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
+import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 
 public interface UserService extends UserDetailsService {
 
-    void save(SystemUserDto systemUserDto);
+    void save(UserDto userDto);
 
     boolean existsById(UUID id);
 
@@ -21,7 +22,7 @@ public interface UserService extends UserDetailsService {
 
     boolean existsByUsername(String username);
 
-    UserResponseDto update(SystemUserUpdateDto systemUserUpdateDto);
+    UserResponseDto update(UserUpdateDto userUpdateDto);
 
     void updatePasswordByEmail(String email, String password);
 
@@ -33,17 +34,15 @@ public interface UserService extends UserDetailsService {
 
     UserEntity findEntityById(UUID id);
 
-    SystemUserDto systemFindByEmail(String mail);
+    Optional<UserDto> systemFindByEmail(String mail);
 
-    SystemUserDto systemFindById(UUID id);
+    Optional<UserDto> systemFindById(UUID id);
 
-    PagedDataDto<PublicUserResponseDto> findAll(UserFilterDto filter, PageRequest pageRequest);
+    PageDto<PublicUserResponseDto> findAll(DefaultUserFilter filter, PageRequest pageRequest);
 
     void deleteById(UUID id);
 
     void deleteByPassword(UUID id, String password) throws BadCredentialsException, IncorrectPassword;
 
-    SystemUserUpdateDto mapToUpdateDto(UserUpdateDto userUpdateDto);
-
-    SystemUserDto systemFindByUsername(String username);
+    Optional<UserDto> systemFindByUsername(String username);
 }

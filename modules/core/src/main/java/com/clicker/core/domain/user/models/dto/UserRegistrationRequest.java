@@ -5,15 +5,13 @@ import com.clicker.core.domain.user.validation.username.UniqueUsername;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class UserRegistrationDto {
+@RequiredArgsConstructor
+public class UserRegistrationRequest {
 
     @NotBlank(message = "Email shouldn't be empty!")
     @Size(min = 11, max = 50)

@@ -1,4 +1,4 @@
-package com.clicker.core.domain.avatar;
+package com.clicker.core.domain.user.repository;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -7,8 +7,6 @@ import java.util.UUID;
 public interface AvatarStorage {
 
     String save(UUID userId, MultipartFile image);
-
-    String get(String url);
 
     void delete(String url);
 }

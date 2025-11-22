@@ -1,4 +1,4 @@
-package com.clicker.core.domain.user;
+package com.clicker.core.domain.user.repository;
 
 import com.clicker.core.domain.user.models.entity.UserEntity;
 import org.springframework.data.jpa.repository.EntityGraph;

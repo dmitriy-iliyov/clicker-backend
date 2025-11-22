@@ -1,57 +1,62 @@
 package com.clicker.core.domain.user;
 
 import com.clicker.core.domain.user.mapper.UserMapper;
-import com.clicker.core.domain.user.models.dto.SystemUserDto;
-import com.clicker.core.domain.user.models.dto.UserRegistrationDto;
+import com.clicker.core.domain.user.models.dto.UserDto;
+import com.clicker.core.domain.user.models.dto.UserRegistrationRequest;
 import com.clicker.core.domain.user.models.entity.UnconfirmedUserEntity;
+import com.clicker.core.domain.user.repository.UnconfirmedUserRepository;
 import com.clicker.core.exception.not_found.UnconfirmedUserNotFoundByEmailException;
-import com.clicker.core.exception.not_found.UnconfirmedUserNotFoundByUsernameException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 @Log4j2
 @RequiredArgsConstructor
 public class UnconfirmedUserServiceImpl implements UnconfirmedUserService {
 
-    private final UnconfirmedUserRepository unconfirmedUserRepository;
-    private final UserMapper userMapper;
-
+    private final UnconfirmedUserRepository repository;
+    private final UserMapper mapper;
 
     @Override
-    public void save(UserRegistrationDto userRegistrationDto) {
-        unconfirmedUserRepository.save(userMapper.toUnconfirmedEntity(userRegistrationDto));
+    public void save(UserRegistrationRequest userRegistrationRequest) {
+        repository.save(mapper.toUnconfirmedEntity(userRegistrationRequest));
     }
 
     @Override
     public boolean existsByEmail(String email) {
-        return unconfirmedUserRepository.existsById(email);
+        return repository.existsById(email);
     }
 
     @Override
     public boolean existsByUsername(String username) {
-        return unconfirmedUserRepository.existsByUsername(username);
+        return repository.existsByUsername(username);
     }
 
     @Override
-    public SystemUserDto systemFindByEmail(String email) {
-        UnconfirmedUserEntity unconfirmedUserEntity = unconfirmedUserRepository.findById(email).orElseThrow(
+    public UserDto findByEmail(String email) {
+        UnconfirmedUserEntity entity = repository.findById(email).orElseThrow(
                 UnconfirmedUserNotFoundByEmailException::new
         );
-        return userMapper.toSystemDto(unconfirmedUserEntity);
+        return mapper.toDto(entity);
     }
 
     @Override
-    public SystemUserDto systemFindByUsername(String username) {
-        UnconfirmedUserEntity unconfirmedUserEntity = unconfirmedUserRepository.findByUsername(username).orElseThrow(
-                UnconfirmedUserNotFoundByUsernameException::new
-        );
-        return userMapper.toSystemDto(unconfirmedUserEntity);
+    public Optional<UserDto> systemFindByEmail(String email) {
+        return repository.findById(email)
+                .map(mapper::toDto);
+    }
+
+    @Override
+    public Optional<UserDto> systemFindByUsername(String username) {
+        return repository.findByUsername(username)
+                .map(mapper::toDto);
     }
 
     @Override
     public void deleteByEmail(String email) {
-        unconfirmedUserRepository.deleteById(email);
+        repository.deleteById(email);
     }
 }
