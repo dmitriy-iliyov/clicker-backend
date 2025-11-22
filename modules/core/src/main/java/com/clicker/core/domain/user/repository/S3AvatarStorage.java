@@ -27,10 +27,10 @@ public class S3AvatarStorage implements AvatarStorage {
     @Value("${aws.s3.base-url}")
     private String URL_TEMPLATE;
 
-    @Value("${}")
-    private String KEY_TEMPLATE = "avatar/%s/%s";
+    @Value("${aws.s3.avatar.key-template}")
+    private String KEY_TEMPLATE;
 
-    @Value("${}")
+    @Value("${aws.s3.avatar.max-name-size}")
     private int MAX_NAME_SIZE;
 
     @Override
