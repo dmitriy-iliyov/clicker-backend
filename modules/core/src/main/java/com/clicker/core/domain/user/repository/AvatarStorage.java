@@ -4,7 +4,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.UUID;
 
-public interface AvatarCloudStorage {
+public interface AvatarStorage {
 
     String save(UUID userId, MultipartFile image);
 

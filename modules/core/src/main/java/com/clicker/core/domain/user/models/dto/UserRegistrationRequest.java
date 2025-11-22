@@ -1,6 +1,7 @@
 package com.clicker.core.domain.user.models.dto;
 
 import com.clicker.core.domain.user.validation.email.UniqueEmail;
+import com.clicker.core.domain.user.validation.username.UniqueUsername;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -24,7 +25,8 @@ public class UserRegistrationDto {
     @Size(min = 10, max = 40, message = "Password length must be greater than 10 and less than 40!")
     private String password;
 
+    @NotBlank(message = "Username cannot be null or blank!")
     @Size(max = 50, message = "Username length must be than 50!")
-    //@UniqueUsername
+    @UniqueUsername
     private String username;
 }
