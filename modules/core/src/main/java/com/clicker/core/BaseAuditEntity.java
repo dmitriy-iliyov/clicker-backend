@@ -1,21 +1,25 @@
-package com.clicker.core.domain.currency.models;
+package com.clicker.core;
 
-import com.clicker.core.domain.user.models.entity.UserEntity;
+import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.LastModifiedBy;
+import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.Instant;
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
+@Data
 public abstract class BaseAuditEntity {
 
-    @CreatedBy
-    protected UserEntity creator;
+    @CreatedDate
+    @Column(name = "created_at", nullable = false, updatable = false)
+    protected Instant createdAt;
 
-    @LastModifiedBy
-    protected UserEntity updater;
+    @LastModifiedDate
+    @Column(name = "updated_at", nullable = false)
+    protected Instant updatedAt;
 }

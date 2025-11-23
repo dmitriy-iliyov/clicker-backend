@@ -38,7 +38,9 @@ public class CurrencyController {
 
     @GetMapping("/{id}/wallets")
     public ResponseEntity<?> getWallets(@PathVariable("id") @Positive(message = "Currency id should be positive!") Long id) {
-        return ResponseEntity.ok(service.findById(id));
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(service.findById(id));
     }
 
     @GetMapping("/{id}")

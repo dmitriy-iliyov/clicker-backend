@@ -1,24 +1,24 @@
 package com.clicker.core.domain.currency.models;
 
 
+import com.clicker.core.InteractorAuditEntity;
+import com.clicker.core.domain.user.models.entity.UserEntity;
 import com.clicker.core.domain.wallets.models.WalletEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
-@ToString(exclude = "wallets")
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "currencies")
-public class CurrencyEntity {
+@Data
+@EqualsAndHashCode(callSuper = true)
+@ToString(exclude = "wallets", callSuper = true)
+@AllArgsConstructor
+@NoArgsConstructor
+public class CurrencyEntity extends InteractorAuditEntity<UserEntity> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,17 +40,5 @@ public class CurrencyEntity {
         this.code = code;
         this.createdAt = Instant.now();
         this.updatedAt = this.createdAt;
-    }
-
-    @PrePersist
-    private void prePersist() {
-        Instant now = Instant.now();
-        createdAt = now;
-        updatedAt = now;
-    }
-
-    @PreUpdate
-    private void preUpdate() {
-        updatedAt = Instant.now();
     }
 }

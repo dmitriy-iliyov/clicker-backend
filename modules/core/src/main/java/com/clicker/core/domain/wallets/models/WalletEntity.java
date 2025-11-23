@@ -1,22 +1,22 @@
 package com.clicker.core.domain.wallets.models;
 
+import com.clicker.core.BaseAuditEntity;
 import com.clicker.core.domain.currency.models.CurrencyEntity;
 import com.clicker.core.domain.user.models.entity.UserEntity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
-import java.time.Instant;
 import java.util.Objects;
 
+@Entity
+@Table(name = "wallets")
 @Getter
 @Setter
 @ToString(exclude = "user")
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "wallets")
-public class WalletEntity {
+public class WalletEntity extends BaseAuditEntity {
 
     @Id
     @SequenceGenerator(sequenceName = "wallets_seq", name = "wallets_seq", allocationSize = 20)
@@ -30,27 +30,9 @@ public class WalletEntity {
     @Column(name = "address", nullable = false)
     private String address;
 
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private Instant createdAt;
-
-    @Column(name = "updated_at", nullable = false)
-    private Instant updatedAt;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false, updatable = false)
     private UserEntity user;
-
-    @PrePersist
-    private void beforeCreate() {
-        Instant now = Instant.now();
-        createdAt = now;
-        updatedAt = now;
-    }
-
-    @PreUpdate
-    private void beforeUpdate() {
-        updatedAt = Instant.now();
-    }
 
     @Override
     public final boolean equals(Object o) {

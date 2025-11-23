@@ -1,4 +1,4 @@
-package com.clicker.core.domain.wallets.models.wallet_token;
+package com.clicker.core.configs;
 
 
 import com.clicker.core.domain.wallets.models.wallet_token.factory.WalletTokenFactory;
