@@ -6,11 +6,9 @@ import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
 
-
-public record UserDto(
+public record ShortUserDto(
         UUID id,
         String email,
-        String password,
         String username,
         List<Authority> authorities,
         Instant createdAt,

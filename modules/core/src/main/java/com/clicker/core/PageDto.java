@@ -1,4 +1,4 @@
-package com.clicker.core.domain.user.models.dto;
+package com.clicker.core;
 
 import org.springframework.data.domain.Page;
 

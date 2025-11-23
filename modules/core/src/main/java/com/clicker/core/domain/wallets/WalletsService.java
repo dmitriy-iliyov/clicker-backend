@@ -27,7 +27,7 @@ public interface WalletsService {
 
     void setMainWallet(Long id, HttpServletResponse response);
 
-    void updateUserWallets(UUID userId, List<WalletUpdateDto> walletUpdateDtos);
+    void updateUserWallets(UUID userId, Set<WalletUpdateDto> walletUpdateDtos);
 
     WalletResponseDto update(WalletUpdateDto walletUpdateDto);
 

@@ -8,6 +8,8 @@ import com.clicker.core.domain.wallets.models.dto.WalletCreateDto;
 import com.clicker.core.domain.wallets.models.dto.WalletResponseDto;
 import com.clicker.core.domain.wallets.models.dto.WalletUpdateDto;
 import com.clicker.core.domain.wallets.validation.validator.WalletValidator;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
@@ -26,17 +28,19 @@ public class WalletFacadeImpl implements WalletFacade {
     private final WalletsService walletsService;
     private final WalletValidator walletValidator;
     private final Validator validator;
+    @PersistenceContext
+    private final EntityManager entityManager;
 
     @Override
     public WalletResponseDto save(UUID userId, WalletCreateDto walletCreateDto) {
-        UserEntity userEntity = userService.findEntityById(userId);
-        return walletsService.save(userEntity, walletCreateDto);
+        UserEntity entity = entityManager.getReference(UserEntity.class, userId);
+        return walletsService.save(entity, walletCreateDto);
     }
 
     @Override
     public void setMainWallet(UUID userId, Long id, HttpServletResponse response) {
-        UserResponseDto userResponseDto = userService.findWithWalletsById(userId);
-        walletValidator.validateWalletOwnership(userResponseDto, id);
+        UserResponseDto dto = userService.findWithWalletsById(userId);
+        walletValidator.validateWalletOwnership(dto, id);
         walletsService.setMainWallet(id, response);
     }
 
@@ -53,8 +57,8 @@ public class WalletFacadeImpl implements WalletFacade {
 
     @Override
     public void deleteByUserIdNId(UUID userId, Long id) {
-        UserResponseDto userResponseDto = userService.findWithWalletsById(userId);
-        walletValidator.validateWalletOwnership(userResponseDto, id);
+        UserResponseDto dto = userService.findWithWalletsById(userId);
+        walletValidator.validateWalletOwnership(dto, id);
         walletsService.delete(id);
     }
 

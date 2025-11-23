@@ -6,7 +6,9 @@ import com.clicker.core.security.core.models.authority.models.AuthorityEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
 
 
 @Entity
@@ -40,7 +42,7 @@ public class UserEntity extends BaseAuditEntity {
     @JoinTable(name = "user_authority",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "authority_id"))
-    private List<AuthorityEntity> authorities = new ArrayList<>();
+    private Set<AuthorityEntity> authorities = new HashSet<>();
 
     @Column(name = "is_expired", nullable = false)
     private boolean isExpired;

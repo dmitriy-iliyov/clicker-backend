@@ -1,17 +1,18 @@
 package com.clicker.core.domain.user.models.dto;
 
-import com.clicker.core.domain.wallets.models.dto.WalletUpdateDto;
 import com.clicker.core.security.core.models.authority.models.Authority;
 
+import java.time.Instant;
 import java.util.Set;
 import java.util.UUID;
 
-public record UserUpdateDto(
+
+public record ConfirmedUserDto(
         UUID id,
         String email,
         String password,
         String username,
-        Set<WalletUpdateDto> wallets,
-        String avatarUrl,
-        Set<Authority> authorities
+        Set<Authority> authorities,
+        Instant createdAt,
+        Instant updatedAt
 ) { }

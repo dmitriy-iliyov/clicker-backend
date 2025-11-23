@@ -9,6 +9,7 @@ import com.clicker.core.security.core.models.authority.models.Authority;
 import org.mapstruct.*;
 
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 
@@ -21,13 +22,19 @@ public interface UserMapper {
     @Mapping(target = "username", qualifiedByName = "generateUsernameIfEmpty", source = "username")
     UnconfirmedUserEntity toUnconfirmedEntity(UserRegistrationRequest request);
 
-    UserDto toDto(UnconfirmedUserEntity entity);
+    @Mapping(target = "authorities", ignore = true)
+    UserEntity toEntity(ConfirmedUserDto dto);
+
+    ConfirmedUserDto toConfirmedDto(UnconfirmedUserEntity entity);
 
     @Mapping(target = "authorities", qualifiedByName = "toAuthorityList", source = "authorities")
-    UserDto toDto(UserEntity entity);
+    ShortUserDto toShortDto(UserEntity entity);
 
-    @Mapping(target = "authorities", ignore = true)
-    UserEntity toEntity(UserDto dto);
+    ShortUserDto toShortDto(UnconfirmedUserEntity entity);
+
+    @Mapping(target = "authorities", qualifiedByName = "toAuthorityList", source = "authorities")
+    @Mapping(target = "wallets", qualifiedByName = "toResponseDtoSet", source = "wallets")
+    FullUserDto toFullDto(UserEntity entity);
 
     @Mapping(target = "createdAt", qualifiedByName = "formatDate", source = "createdAt")
     @Mapping(target = "wallets", qualifiedByName = "toResponseDtoSet", source = "wallets")
@@ -35,7 +42,7 @@ public interface UserMapper {
 
     List<PublicUserResponseDto> toPublicResponseDto(List<UserEntity> entities);
 
-    UserUpdateDto toUpdateDto(UUID id, UserUpdateRequest request, String avatarUrl, List<Authority> authorities);
+    UserUpdateDto toUpdateDto(UUID id, UserUpdateRequest request, String avatarUrl, Set<Authority> authorities);
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "password", qualifiedByName = "encodePassword", source = "password")

@@ -1,5 +1,6 @@
 package com.clicker.core.domain.user;
 
+import com.clicker.core.PageDto;
 import com.clicker.core.domain.user.mapper.UserMapper;
 import com.clicker.core.domain.user.models.DefaultUserDetails;
 import com.clicker.core.domain.user.models.dto.*;
@@ -27,7 +28,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
@@ -62,7 +62,7 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
-    public void save(UserDto dto) {
+    public void save(ConfirmedUserDto dto) {
         UserEntity entity = repository.save(mapper.toEntity(dto));
 
         AuthorityEntity authorityEntity = authorityService.findByAuthority(Authority.ROLE_USER);
@@ -114,15 +114,8 @@ public class UserServiceImpl implements UserService {
     public void confirmUserByEmail(String email) {
         UserEntity entity = repository.findWithAuthorityByEmail(email).orElseThrow(UserNotFoundByEmailException::new);
         AuthorityEntity newAuthorityEntity = authorityService.findByAuthority(Authority.ROLE_USER);
-
-        List<AuthorityEntity> authorityEntities = entity.getAuthorities();
-        authorityEntities.removeIf(auth -> auth.getAuthority().equals(Authority.ROLE_UNCONFIRMED_USER));
-
-        if(!authorityEntities.contains(newAuthorityEntity)) {
-            authorityEntities.add(newAuthorityEntity);
-        }
-
-        entity.setAuthorities(authorityEntities);
+        entity.getAuthorities().removeIf(auth -> auth.getAuthority().equals(Authority.ROLE_UNCONFIRMED_USER));
+        entity.getAuthorities().add(newAuthorityEntity);
         repository.save(entity);
     }
 
@@ -134,9 +127,19 @@ public class UserServiceImpl implements UserService {
 
     @Transactional(readOnly = true)
     @Override
-    public UserResponseDto findWithWalletsById(UUID id){
-        UserEntity entity = repository.findWithWalletsById(id).orElseThrow(UserNotFoundByIdException::new);
-        return mapper.toResponseDto(entity);
+    public UserResponseDto findWithWalletsById(UUID id) {
+        return repository.findWithWalletsById(id)
+                .map(mapper::toResponseDto)
+                .orElseThrow(UserNotFoundByIdException::new);
+    }
+
+
+    @Transactional(readOnly = true)
+    @Override
+    public FullUserDto findFullById(UUID id) {
+        return repository.findWithWalletsById(id)
+                .map(mapper::toFullDto)
+                .orElseThrow(UserNotFoundByIdException::new);
     }
 
     @Transactional(readOnly = true)
@@ -147,23 +150,16 @@ public class UserServiceImpl implements UserService {
 
     @Transactional(readOnly = true)
     @Override
-    public Optional<UserDto> systemFindById(UUID id) {
-        return repository.findWithAuthorityById(id)
-                .map(mapper::toDto);
-    }
-
-    @Transactional(readOnly = true)
-    @Override
-    public Optional<UserDto> systemFindByEmail(String email) {
+    public Optional<ShortUserDto> findShortByEmail(String email) {
         return repository.findWithAuthorityByEmail(email)
-                .map(mapper::toDto);
+                .map(mapper::toShortDto);
     }
 
     @Transactional(readOnly = true)
     @Override
-    public Optional<UserDto> systemFindByUsername(String username) {
+    public Optional<ShortUserDto> findShortByUsername(String username) {
         return repository.findWithAuthorityByUsername(username)
-                .map(mapper::toDto);
+                .map(mapper::toShortDto);
     }
 
     @Cacheable(
@@ -191,8 +187,8 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public void deleteByPassword(UUID id, String password) throws BadCredentialsException, IncorrectPassword {
-        UserEntity userEntity = repository.findById(id).orElseThrow(UserNotFoundByIdException::new);
-        if (passwordEncoder.matches(password, userEntity.getPassword())) {
+        UserEntity entity = repository.findById(id).orElseThrow(UserNotFoundByIdException::new);
+        if (passwordEncoder.matches(password, entity.getPassword())) {
             repository.deleteById(id);
             return;
         }

@@ -109,7 +109,7 @@ public class WalletsServiceImpl implements WalletsService {
 
     @Transactional
     @Override
-    public void updateUserWallets(UUID userId, List<WalletUpdateDto> walletUpdateDtos) {
+    public void updateUserWallets(UUID userId, Set<WalletUpdateDto> walletUpdateDtos) {
         Map<Long, WalletEntity> existedWallets = walletsRepository.findAllWithCurrencyByUserId(userId).stream()
                 .collect(Collectors.toMap(WalletEntity::getId, walletEntity -> walletEntity));
 

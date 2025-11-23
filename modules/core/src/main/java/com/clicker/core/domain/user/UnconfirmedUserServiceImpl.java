@@ -1,7 +1,8 @@
 package com.clicker.core.domain.user;
 
 import com.clicker.core.domain.user.mapper.UserMapper;
-import com.clicker.core.domain.user.models.dto.UserDto;
+import com.clicker.core.domain.user.models.dto.ConfirmedUserDto;
+import com.clicker.core.domain.user.models.dto.ShortUserDto;
 import com.clicker.core.domain.user.models.dto.UserRegistrationRequest;
 import com.clicker.core.domain.user.models.entity.UnconfirmedUserEntity;
 import com.clicker.core.domain.user.repository.UnconfirmedUserRepository;
@@ -36,23 +37,23 @@ public class UnconfirmedUserServiceImpl implements UnconfirmedUserService {
     }
 
     @Override
-    public UserDto findByEmail(String email) {
+    public ConfirmedUserDto findByEmail(String email) {
         UnconfirmedUserEntity entity = repository.findById(email).orElseThrow(
                 UnconfirmedUserNotFoundByEmailException::new
         );
-        return mapper.toDto(entity);
+        return mapper.toConfirmedDto(entity);
     }
 
     @Override
-    public Optional<UserDto> systemFindByEmail(String email) {
+    public Optional<ShortUserDto> systemFindByEmail(String email) {
         return repository.findById(email)
-                .map(mapper::toDto);
+                .map(mapper::toShortDto);
     }
 
     @Override
-    public Optional<UserDto> systemFindByUsername(String username) {
+    public Optional<ShortUserDto> systemFindByUsername(String username) {
         return repository.findByUsername(username)
-                .map(mapper::toDto);
+                .map(mapper::toShortDto);
     }
 
     @Override

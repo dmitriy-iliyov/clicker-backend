@@ -1,5 +1,6 @@
 package com.clicker.core.domain.user;
 
+import com.clicker.core.PageDto;
 import com.clicker.core.domain.user.models.dto.*;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.multipart.MultipartFile;

@@ -1,13 +1,11 @@
 package com.clicker.core.domain.wallets.validation.validator;
 
+import com.clicker.core.domain.user.models.dto.FullUserDto;
 import com.clicker.core.domain.user.models.dto.UserResponseDto;
 
-import java.util.List;
+import java.util.Set;
 
 public interface WalletValidator {
-
-    void validateWalletOwnership(UserResponseDto userResponseDto, Long walletId);
-
-    void validateWalletOwnership(UserResponseDto userResponseDto, List<Long> inputWalletIds);
-
+    void validateWalletOwnership(UserResponseDto user, Long walletId);
+    void validateWalletOwnership(FullUserDto user, Set<Long> inputWalletIds);
 }
