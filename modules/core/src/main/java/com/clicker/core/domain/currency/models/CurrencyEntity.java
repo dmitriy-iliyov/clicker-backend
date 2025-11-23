@@ -1,9 +1,9 @@
 package com.clicker.core.domain.currency.models;
 
 
-import com.clicker.core.InteractorAuditEntity;
 import com.clicker.core.domain.user.models.entity.UserEntity;
 import com.clicker.core.domain.wallets.models.WalletEntity;
+import com.clicker.core.sgared.InteractorAuditEntity;
 import jakarta.persistence.*;
 import lombok.*;
 

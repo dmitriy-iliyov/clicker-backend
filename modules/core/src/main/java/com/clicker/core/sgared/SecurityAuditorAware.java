@@ -1,4 +1,4 @@
-package com.clicker.core;
+package com.clicker.core.sgared;
 
 import com.clicker.auth.TokenUserDetails;
 import com.clicker.core.domain.user.models.entity.UserEntity;

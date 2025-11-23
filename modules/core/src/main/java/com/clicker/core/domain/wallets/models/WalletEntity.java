@@ -1,8 +1,8 @@
 package com.clicker.core.domain.wallets.models;
 
-import com.clicker.core.BaseAuditEntity;
 import com.clicker.core.domain.currency.models.CurrencyEntity;
 import com.clicker.core.domain.user.models.entity.UserEntity;
+import com.clicker.core.sgared.BaseAuditEntity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;

@@ -1,4 +1,4 @@
-package com.clicker.core;
+package com.clicker.core.sgared;
 
 import jakarta.persistence.*;
 import lombok.Data;

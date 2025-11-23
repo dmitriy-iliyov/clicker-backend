@@ -31,6 +31,12 @@ public interface WalletMapper {
                              @MappingTarget WalletEntity walletEntity,
                              @Context CurrencyService currencyService);
 
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "currency", source = "currency")
+    void updateEntityFromDto(WalletUpdateDto walletUpdateDto,
+                             @MappingTarget WalletEntity walletEntity,
+                             CurrencyEntity currency);
+
     @Named("getCurrencyById")
     default CurrencyEntity getCurrencyById(Long id, @Context CurrencyService currencyService) {
         return currencyService.findEntityById(id);

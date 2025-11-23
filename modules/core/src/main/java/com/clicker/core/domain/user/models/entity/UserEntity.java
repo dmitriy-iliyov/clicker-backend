@@ -1,8 +1,8 @@
 package com.clicker.core.domain.user.models.entity;
 
-import com.clicker.core.BaseAuditEntity;
 import com.clicker.core.domain.wallets.models.WalletEntity;
 import com.clicker.core.security.core.models.authority.models.AuthorityEntity;
+import com.clicker.core.sgared.BaseAuditEntity;
 import jakarta.persistence.*;
 import lombok.*;
 

@@ -2,10 +2,10 @@ package com.clicker.core.domain.user.controllers;
 
 
 import com.clicker.auth.TokenUserDetails;
-import com.clicker.core.PageDto;
 import com.clicker.core.domain.user.UserFacade;
 import com.clicker.core.domain.user.models.dto.*;
 import com.clicker.core.messaging.confirmation.ConfirmationService;
+import com.clicker.core.sgared.PageDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -55,22 +55,11 @@ public class UserController {
         return ResponseEntity.ok(userResponseDto);
     }
 
-    @PutMapping("/me/no-body")
+    @PutMapping("/me")
     @PreAuthorize("hasAuthority('ROLE_USER')")
     public ResponseEntity<?> update(@AuthenticationPrincipal TokenUserDetails tokenUserDetails,
                                     @RequestParam("user") UserUpdateRequest request,
                                     @RequestParam("avatar") MultipartFile avatar) {
-        facade.update(tokenUserDetails.getUserId(), request, avatar);
-        return ResponseEntity
-                .status(HttpStatus.NO_CONTENT)
-                .build();
-    }
-
-    @PutMapping("/me")
-    @PreAuthorize("hasAuthority('ROLE_USER')")
-    public ResponseEntity<?> updateWithReturn(@AuthenticationPrincipal TokenUserDetails tokenUserDetails,
-                                              @RequestParam("user") UserUpdateRequest request,
-                                              @RequestParam("avatar") MultipartFile avatar) {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(facade.update(tokenUserDetails.getUserId(), request, avatar));

@@ -2,7 +2,6 @@ package com.clicker.core.domain.user.controllers;
 
 import com.clicker.core.domain.user.UserFacade;
 import com.clicker.core.domain.user.models.dto.UserResponseDto;
-import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.validator.constraints.UUID;
 import org.springframework.http.HttpStatus;
@@ -24,10 +23,8 @@ public class AdminUserController {
         return ResponseEntity.ok(userResponseDto);
     }
 
-    @DeleteMapping("/{id}/{password}")
-    public ResponseEntity<?> delete(@PathVariable("id") @UUID(message = "Invalid id format!") String id,
-                                    @PathVariable(value = "password", required = false)
-                                    @NotBlank(message = "Password shouldn't be empty!") String password) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable("id") @UUID(message = "Invalid id format!") String id) {
         facade.deleteById(java.util.UUID.fromString(id));
         return ResponseEntity
                 .status(HttpStatus.NO_CONTENT)

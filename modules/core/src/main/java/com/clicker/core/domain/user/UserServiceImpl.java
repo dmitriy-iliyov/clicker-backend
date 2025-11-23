@@ -1,6 +1,5 @@
 package com.clicker.core.domain.user;
 
-import com.clicker.core.PageDto;
 import com.clicker.core.domain.user.mapper.UserMapper;
 import com.clicker.core.domain.user.models.DefaultUserDetails;
 import com.clicker.core.domain.user.models.dto.*;
@@ -8,14 +7,18 @@ import com.clicker.core.domain.user.models.entity.UserEntity;
 import com.clicker.core.domain.user.repository.UserRepository;
 import com.clicker.core.domain.wallets.WalletsService;
 import com.clicker.core.domain.wallets.models.dto.WalletResponseDto;
+import com.clicker.core.domain.wallets.models.dto.WalletUpdateDto;
+import com.clicker.core.exception.ExceptionUtils;
 import com.clicker.core.exception.IncorrectPassword;
 import com.clicker.core.exception.not_found.UserNotFoundByEmailException;
 import com.clicker.core.exception.not_found.UserNotFoundByIdException;
 import com.clicker.core.security.core.models.authority.AuthorityService;
 import com.clicker.core.security.core.models.authority.models.Authority;
 import com.clicker.core.security.core.models.authority.models.AuthorityEntity;
+import com.clicker.core.sgared.PageDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -28,9 +31,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -64,10 +70,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public void save(ConfirmedUserDto dto) {
         UserEntity entity = repository.save(mapper.toEntity(dto));
-
         AuthorityEntity authorityEntity = authorityService.findByAuthority(Authority.ROLE_USER);
         entity.getAuthorities().add(authorityEntity);
-
         repository.save(entity);
     }
 
@@ -92,13 +96,18 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public UserResponseDto update(UserUpdateDto dto) {
-        UserEntity entity = repository.findById(dto.id()).orElseThrow(
-                UserNotFoundByIdException::new
-        );
-        mapper.updateEntityFromDto(dto, entity);
-        entity.setAuthorities(authorityService.toAuthorityEntityList(dto.authorities()));
-        walletsService.updateUserWallets(entity.getId(), dto.wallets());
-        return mapper.toResponseDto(repository.save(entity));
+        try {
+            UserEntity entity = repository.findById(dto.id()).orElseThrow(UserNotFoundByIdException::new);
+            mapper.updateEntityFromDto(dto, entity);
+            Map<Long, WalletUpdateDto> walletDtos = dto.wallets().stream()
+                    .collect(Collectors.toMap(WalletUpdateDto::getId, Function.identity()));
+            walletsService.updateBatch(walletDtos, entity.getWallets());
+            entity.setAuthorities(authorityService.toAuthorityEntityList(dto.authorities()));
+            return mapper.toResponseDto(repository.save(entity));
+        } catch(ConstraintViolationException e) {
+            log.error("Error when updating wallet, id={}", dto.id(), e);
+            throw ExceptionUtils.resolveCurrencyIdError(e);
+        }
     }
 
     @Transactional
@@ -132,7 +141,6 @@ public class UserServiceImpl implements UserService {
                 .map(mapper::toResponseDto)
                 .orElseThrow(UserNotFoundByIdException::new);
     }
-
 
     @Transactional(readOnly = true)
     @Override

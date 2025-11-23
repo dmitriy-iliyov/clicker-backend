@@ -1,10 +1,10 @@
 package com.clicker.core.domain.user;
 
-import com.clicker.core.PageDto;
 import com.clicker.core.domain.user.models.dto.*;
 import com.clicker.core.domain.user.models.entity.UserEntity;
 import com.clicker.core.domain.wallets.models.dto.WalletResponseDto;
 import com.clicker.core.exception.IncorrectPassword;
+import com.clicker.core.sgared.PageDto;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UserDetailsService;

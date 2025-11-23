@@ -6,6 +6,7 @@ import com.clicker.core.domain.wallets.validation.unique_address.UniqueWalletAdd
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
@@ -13,7 +14,8 @@ import lombok.Data;
 @UniqueWalletAddress
 @Data
 public class WalletUpdateDto {
-        @JsonIgnore
+        @NotNull(message = "Wallet id shouldn't be blank!")
+        @Positive(message = "Wallet id shouldn't be negative!")
         private Long id;
 
         @NotNull(message = "Currency id shouldn't be blank!")
