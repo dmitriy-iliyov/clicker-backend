@@ -15,7 +15,7 @@ public class WalletTokenFactoryImpl implements WalletTokenFactory {
                 fullWalletResponseDto.id(),
                 fullWalletResponseDto.address(),
                 fullWalletResponseDto.currencyId(),
-                fullWalletResponseDto.currencyCode(),
+                fullWalletResponseDto.currencyType().code(),
                 fullWalletResponseDto.userId()
         );
     }

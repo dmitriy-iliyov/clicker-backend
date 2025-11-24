@@ -2,7 +2,7 @@ package com.clicker.core.domain.wallets.models;
 
 import com.clicker.core.domain.currency.models.CurrencyEntity;
 import com.clicker.core.domain.user.models.entity.UserEntity;
-import com.clicker.core.sgared.BaseAuditEntity;
+import com.clicker.core.shared.InteractorAuditEntity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
@@ -16,7 +16,7 @@ import java.util.Objects;
 @ToString(exclude = "user")
 @NoArgsConstructor
 @AllArgsConstructor
-public class WalletEntity extends BaseAuditEntity {
+public class WalletEntity extends InteractorAuditEntity<UserEntity> {
 
     @Id
     @SequenceGenerator(sequenceName = "wallets_seq", name = "wallets_seq", allocationSize = 20)

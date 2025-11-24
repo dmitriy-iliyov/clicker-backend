@@ -1,6 +1,5 @@
 package com.clicker.core.domain.wallets.mapper;
 
-import com.clicker.core.domain.currency.CurrencyService;
 import com.clicker.core.domain.currency.mapper.CurrencyMapper;
 import com.clicker.core.domain.currency.models.CurrencyEntity;
 import com.clicker.core.domain.wallets.models.WalletEntity;
@@ -17,33 +16,17 @@ import java.util.Set;
 public interface WalletMapper {
 
     @Mapping(target = "id", ignore = true)
-    WalletEntity toEntity(WalletCreateDto walletCreateDto);
+    WalletEntity toEntity(WalletCreateDto dto);
 
-    @Mapping(target = "currencyCode", source = "currency", qualifiedByName = "getCurrencyCode")
-    WalletResponseDto toResponseDto(WalletEntity walletEntity);
+    @Mapping(target = "currencyType", expression = "java(entity.getCurrency().getType())")
+    WalletResponseDto toResponseDto(WalletEntity entity);
 
     @Named("toResponseDtoSet")
-    Set<WalletResponseDto> toResponseDtoSet(Set<WalletEntity> walletEntities);
-
-    @Mapping(target = "id", ignore = true)
-    @Mapping(target = "currency", source = "currencyId", qualifiedByName = "getCurrencyById")
-    void updateEntityFromDto(WalletUpdateDto walletUpdateDto,
-                             @MappingTarget WalletEntity walletEntity,
-                             @Context CurrencyService currencyService);
+    Set<WalletResponseDto> toResponseDtoSet(Set<WalletEntity> wallets);
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "currency", source = "currency")
-    void updateEntityFromDto(WalletUpdateDto walletUpdateDto,
-                             @MappingTarget WalletEntity walletEntity,
+    void updateEntityFromDto(WalletUpdateDto dto,
+                             @MappingTarget WalletEntity wallet,
                              CurrencyEntity currency);
-
-    @Named("getCurrencyById")
-    default CurrencyEntity getCurrencyById(Long id, @Context CurrencyService currencyService) {
-        return currencyService.findEntityById(id);
-    }
-
-    @Named("getCurrencyCode")
-    default String getCurrencyCode(CurrencyEntity currencyEntity) {
-        return currencyEntity.getCode();
-    }
 }
