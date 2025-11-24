@@ -7,7 +7,7 @@ import com.clicker.core.domain.user.repository.AvatarStorage;
 import com.clicker.core.domain.user.validation.UserUpdateValidator;
 import com.clicker.core.domain.wallets.models.dto.WalletUpdateDto;
 import com.clicker.core.domain.wallets.validation.validator.WalletValidator;
-import com.clicker.core.sgared.PageDto;
+import com.clicker.core.shared.PageDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.PageRequest;

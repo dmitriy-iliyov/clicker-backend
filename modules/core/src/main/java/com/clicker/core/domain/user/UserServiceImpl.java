@@ -15,7 +15,7 @@ import com.clicker.core.exception.not_found.UserNotFoundByIdException;
 import com.clicker.core.security.core.models.authority.AuthorityService;
 import com.clicker.core.security.core.models.authority.models.Authority;
 import com.clicker.core.security.core.models.authority.models.AuthorityEntity;
-import com.clicker.core.sgared.PageDto;
+import com.clicker.core.shared.PageDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.exception.ConstraintViolationException;
@@ -102,7 +102,7 @@ public class UserServiceImpl implements UserService {
             Map<Long, WalletUpdateDto> walletDtos = dto.wallets().stream()
                     .collect(Collectors.toMap(WalletUpdateDto::getId, Function.identity()));
             walletsService.updateBatch(walletDtos, entity.getWallets());
-            entity.setAuthorities(authorityService.toAuthorityEntityList(dto.authorities()));
+            entity.setAuthorities(authorityService.toAuthorityEntitySet(dto.authorities()));
             return mapper.toResponseDto(repository.save(entity));
         } catch(ConstraintViolationException e) {
             log.error("Error when updating wallet, id={}", dto.id(), e);

@@ -5,7 +5,7 @@ import com.clicker.auth.TokenUserDetails;
 import com.clicker.core.domain.user.UserFacade;
 import com.clicker.core.domain.user.models.dto.*;
 import com.clicker.core.messaging.confirmation.ConfirmationService;
-import com.clicker.core.sgared.PageDto;
+import com.clicker.core.shared.PageDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;

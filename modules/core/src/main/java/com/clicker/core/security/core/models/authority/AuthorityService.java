@@ -8,5 +8,5 @@ import java.util.Set;
 public interface AuthorityService {
     AuthorityEntity findByAuthority(Authority authority);
 
-    Set<AuthorityEntity> toAuthorityEntityList(Set<Authority> authorities);
+    Set<AuthorityEntity> toAuthorityEntitySet(Set<Authority> authorities);
 }

@@ -27,12 +27,12 @@ public interface UserMapper {
 
     ConfirmedUserDto toConfirmedDto(UnconfirmedUserEntity entity);
 
-    @Mapping(target = "authorities", qualifiedByName = "toAuthorityList", source = "authorities")
+    @Mapping(target = "authorities", qualifiedByName = "toAuthoritySet", source = "authorities")
     ShortUserDto toShortDto(UserEntity entity);
 
     ShortUserDto toShortDto(UnconfirmedUserEntity entity);
 
-    @Mapping(target = "authorities", qualifiedByName = "toAuthorityList", source = "authorities")
+    @Mapping(target = "authorities", qualifiedByName = "toAuthoritySet", source = "authorities")
     @Mapping(target = "wallets", qualifiedByName = "toResponseDtoSet", source = "wallets")
     FullUserDto toFullDto(UserEntity entity);
 

@@ -7,8 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -22,10 +22,10 @@ public class AuthorityServiceImpl implements AuthorityService {
         return authorityRepository.findByAuthority(authority).orElseThrow(AuthorityNotFoundException::new);
     }
 
-    @Override
     @Transactional(readOnly = true)
-    public List<AuthorityEntity> toAuthorityEntityList(List<Authority> authorities) {
-        List<AuthorityEntity> authorityEntities = new ArrayList<>();
+    @Override
+    public Set<AuthorityEntity> toAuthorityEntitySet(Set<Authority> authorities) {
+        Set<AuthorityEntity> authorityEntities = new HashSet<>();
         for (Authority authority: authorities) {
             authorityEntities.add(authorityRepository.findByAuthority(authority).orElseThrow(
                     AuthorityNotFoundException::new)
