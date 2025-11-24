@@ -1,7 +1,7 @@
 package com.clicker.core.exception;
 
 import com.clicker.auth.CookieJwtExpiredException;
-import com.clicker.contracts.exceptions.ErrorUtils;
+import com.clicker.contracts.exceptions.ErrorMappingUtils;
 import com.clicker.contracts.exceptions.dto.ErrorDto;
 import com.clicker.contracts.exceptions.dto.ExceptionResponseDto;
 import com.clicker.contracts.exceptions.models.BaseBadException;
@@ -169,7 +169,7 @@ public class CoreControllerAdvice {
     public ResponseEntity<?> handleHandlerMethodValidationException(HandlerMethodValidationException e, Locale locale) {
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST,
                 messageSource.getMessage("400", null, "error.400", locale));
-        problemDetail.setProperty("errors", ErrorUtils.toErrorDtoList(e.getAllValidationResults()));
+        problemDetail.setProperty("errors", ErrorMappingUtils.toErrorDtoList(e.getAllValidationResults()));
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
                 .body(problemDetail);
@@ -180,7 +180,7 @@ public class CoreControllerAdvice {
     public ResponseEntity<?> handleMethodArgumentNotValidException(MethodArgumentNotValidException e, Locale locale) {
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST,
                 messageSource.getMessage("400", null, "error.400", locale));
-        problemDetail.setProperty("errors", ErrorUtils.toErrorDtoList(e.getBindingResult()));
+        problemDetail.setProperty("errors", ErrorMappingUtils.toErrorDtoList(e.getBindingResult()));
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
                 .body(problemDetail);
@@ -191,7 +191,7 @@ public class CoreControllerAdvice {
         Set<ConstraintViolation<?>> bindingResult = e.getConstraintViolations();
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST,
                 messageSource.getMessage("400", null, "error.400", locale));
-        problemDetail.setProperty("errors", ErrorUtils.toErrorDtoList(bindingResult));
+        problemDetail.setProperty("errors", ErrorMappingUtils.toErrorDtoList(bindingResult));
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
                 .body(problemDetail);

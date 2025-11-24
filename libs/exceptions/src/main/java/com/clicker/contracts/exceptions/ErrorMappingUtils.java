@@ -13,7 +13,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @UtilityClass
-public class ErrorUtils {
+public class ErrorMappingUtils {
 
     public List<ErrorDto> toErrorDtoList(@NotNull BindingResult bindingResult) {
         List<ErrorDto> errors = new ArrayList<>();

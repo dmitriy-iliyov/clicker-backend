@@ -7,7 +7,7 @@ import org.hibernate.exception.ConstraintViolationException;
 @UtilityClass
 public class ExceptionUtils {
 
-    public static RuntimeException resolveCurrencyIdError(ConstraintViolationException e) {
+    public RuntimeException resolveCurrencyIdError(ConstraintViolationException e) {
         String constraintName = e.getConstraintName();
         if (constraintName != null && constraintName.contains("currency_id")) {
             return new CurrencyNotFoundByIdException();
