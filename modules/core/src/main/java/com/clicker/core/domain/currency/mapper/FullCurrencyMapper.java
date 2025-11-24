@@ -2,7 +2,7 @@ package com.clicker.core.domain.currency.mapper;
 
 
 import com.clicker.core.domain.currency.models.CurrencyEntity;
-import com.clicker.core.domain.currency.models.dto.FullCurrencyResponseDto;
+import com.clicker.core.domain.currency.models.FullCurrencyResponseDto;
 import com.clicker.core.domain.wallets.mapper.WalletMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

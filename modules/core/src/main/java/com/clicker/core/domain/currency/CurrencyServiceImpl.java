@@ -3,10 +3,8 @@ package com.clicker.core.domain.currency;
 import com.clicker.core.domain.currency.mapper.CurrencyMapper;
 import com.clicker.core.domain.currency.mapper.FullCurrencyMapper;
 import com.clicker.core.domain.currency.models.CurrencyEntity;
-import com.clicker.core.domain.currency.models.dto.CurrencyCreateDto;
-import com.clicker.core.domain.currency.models.dto.CurrencyResponseDto;
-import com.clicker.core.domain.currency.models.dto.CurrencyUpdateDto;
-import com.clicker.core.domain.currency.models.dto.FullCurrencyResponseDto;
+import com.clicker.core.domain.currency.models.CurrencyResponseDto;
+import com.clicker.core.domain.currency.models.FullCurrencyResponseDto;
 import com.clicker.core.exception.not_found.CurrencyNotFoundByCodeException;
 import com.clicker.core.exception.not_found.CurrencyNotFoundByIdException;
 import lombok.RequiredArgsConstructor;
@@ -19,79 +17,63 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CurrencyServiceImpl implements CurrencyService {
 
-    private final CurrencyRepository currencyRepository;
-    private final CurrencyMapper currencyMapper;
-    private final FullCurrencyMapper fullCurrencyMapper;
-
-    @Transactional
-    @Override
-    public void save(CurrencyCreateDto currencyCreateDto) {
-        currencyRepository.save(currencyMapper.toEntity(currencyCreateDto));
-    }
+    private final CurrencyRepository repository;
+    private final CurrencyMapper mapper;
+    private final FullCurrencyMapper fullMapper;
 
     @Transactional(readOnly = true)
     @Override
     public boolean existedById(Long id) {
-        return currencyRepository.existsById(id);
+        return repository.existsById(id);
     }
 
     @Transactional(readOnly = true)
     @Override
     public boolean existedByCode(String code) {
-        return currencyRepository.existsByCode(code);
+        return repository.existsByCode(code);
     }
 
     @Transactional(readOnly = true)
     @Override
     public CurrencyResponseDto findById(Long id) {
-        CurrencyEntity currencyEntity = currencyRepository.findById(id).orElseThrow(
+        CurrencyEntity currencyEntity = repository.findById(id).orElseThrow(
                 CurrencyNotFoundByIdException::new
         );
-        return currencyMapper.toResponseDto(currencyEntity);
+        return mapper.toResponseDto(currencyEntity);
     }
 
     @Transactional(readOnly = true)
     @Override
     public CurrencyEntity findEntityById(Long id) {
-        return currencyRepository.findById(id).orElseThrow(CurrencyNotFoundByIdException::new);
+        return repository.findById(id).orElseThrow(CurrencyNotFoundByIdException::new);
     }
 
     @Transactional(readOnly = true)
     @Override
     public CurrencyResponseDto findByCode(String code) {
-        CurrencyEntity currencyEntity = currencyRepository.findByCode(code).orElseThrow(
+        CurrencyEntity currencyEntity = repository.findByCode(code).orElseThrow(
                 CurrencyNotFoundByCodeException::new
         );
-        return currencyMapper.toResponseDto(currencyEntity);
+        return mapper.toResponseDto(currencyEntity);
     }
 
     @Transactional(readOnly = true)
     @Override
     public FullCurrencyResponseDto findWithWalletsById(Long id) {
-        CurrencyEntity currencyEntity = currencyRepository.findWithWalletsById(id).orElseThrow(CurrencyNotFoundByIdException::new);
-        return fullCurrencyMapper.toFullResponseDto(currencyEntity);
-    }
-
-    @Transactional
-    @Override
-    public CurrencyResponseDto updateByAdminPassword(String password, CurrencyUpdateDto currencyUpdateDto) {
-        CurrencyEntity currencyEntity = currencyRepository.findById(currencyUpdateDto.getId()).orElseThrow(
-                CurrencyNotFoundByIdException::new
-        );
-        currencyEntity.setCode(currencyUpdateDto.getCode());
-        return currencyMapper.toResponseDto(currencyRepository.save(currencyEntity));
+        CurrencyEntity currencyEntity = repository.findWithWalletsById(id).orElseThrow(CurrencyNotFoundByIdException::new);
+        return fullMapper.toFullResponseDto(currencyEntity);
     }
 
     @Transactional(readOnly = true)
     @Override
     public List<CurrencyResponseDto> findAll() {
-        List<CurrencyEntity> currencyEntities = currencyRepository.findAll();
-        return currencyMapper.toResponseDtoList(currencyEntities);
+        List<CurrencyEntity> currencyEntities = repository.findAll();
+        return mapper.toResponseDtoList(currencyEntities);
     }
 
     @Transactional
     @Override
     public void deleteByAdminPasswordAndId(String password, Long id) {
-        currencyRepository.deleteById(id);
+        repository.deleteById(id);
     }
 }

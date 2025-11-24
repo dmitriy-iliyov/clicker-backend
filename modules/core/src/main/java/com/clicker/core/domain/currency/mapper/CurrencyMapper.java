@@ -1,12 +1,8 @@
 package com.clicker.core.domain.currency.mapper;
 
 import com.clicker.core.domain.currency.models.CurrencyEntity;
-import com.clicker.core.domain.currency.models.dto.CurrencyCreateDto;
-import com.clicker.core.domain.currency.models.dto.CurrencyResponseDto;
-import org.mapstruct.Mapper;
-import org.mapstruct.MappingConstants;
-import org.mapstruct.Named;
-import org.mapstruct.NullValuePropertyMappingStrategy;
+import com.clicker.core.domain.currency.models.CurrencyResponseDto;
+import org.mapstruct.*;
 
 import java.util.List;
 
@@ -15,10 +11,9 @@ import java.util.List;
         nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface CurrencyMapper {
 
-    CurrencyEntity toEntity(CurrencyCreateDto currencyCreateDto);
-
     @Named("toResponseDto")
-    CurrencyResponseDto toResponseDto(CurrencyEntity currencyEntity);
+    @Mapping(target = "currencyType", expression = "java(entity.getType())")
+    CurrencyResponseDto toResponseDto(CurrencyEntity entity);
 
     List<CurrencyResponseDto> toResponseDtoList(List<CurrencyEntity> currencyEntities);
 }
