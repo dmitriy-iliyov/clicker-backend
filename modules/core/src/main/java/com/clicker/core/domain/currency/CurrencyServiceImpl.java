@@ -4,6 +4,7 @@ import com.clicker.core.domain.currency.mapper.CurrencyMapper;
 import com.clicker.core.domain.currency.mapper.FullCurrencyMapper;
 import com.clicker.core.domain.currency.models.CurrencyEntity;
 import com.clicker.core.domain.currency.models.CurrencyResponseDto;
+import com.clicker.core.domain.currency.models.CurrencyType;
 import com.clicker.core.domain.currency.models.FullCurrencyResponseDto;
 import com.clicker.core.exception.not_found.CurrencyNotFoundByCodeException;
 import com.clicker.core.exception.not_found.CurrencyNotFoundByIdException;
@@ -29,8 +30,8 @@ public class CurrencyServiceImpl implements CurrencyService {
 
     @Transactional(readOnly = true)
     @Override
-    public boolean existedByCode(String code) {
-        return repository.existsByCode(code);
+    public boolean existedByType(CurrencyType type) {
+        return repository.existsByType(type);
     }
 
     @Transactional(readOnly = true)
@@ -50,8 +51,8 @@ public class CurrencyServiceImpl implements CurrencyService {
 
     @Transactional(readOnly = true)
     @Override
-    public CurrencyResponseDto findByCode(String code) {
-        CurrencyEntity currencyEntity = repository.findByCode(code).orElseThrow(
+    public CurrencyResponseDto findByType(CurrencyType type) {
+        CurrencyEntity currencyEntity = repository.findByType(type).orElseThrow(
                 CurrencyNotFoundByCodeException::new
         );
         return mapper.toResponseDto(currencyEntity);
