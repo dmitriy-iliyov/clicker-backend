@@ -16,7 +16,7 @@ public interface WalletFacade {
 
     WalletResponseDto update(UUID userId, WalletUpdateDto walletUpdateDto);
 
-    void deleteByUserIdNId(UUID userId, Long id);
+    void deleteByUserIdAndId(UUID userId, Long id);
 
     void deleteById(Long id);
 

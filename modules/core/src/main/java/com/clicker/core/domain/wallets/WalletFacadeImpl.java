@@ -1,21 +1,19 @@
 package com.clicker.core.domain.wallets;
 
 import com.clicker.core.domain.user.UserService;
-import com.clicker.core.domain.user.models.dto.UserResponseDto;
 import com.clicker.core.domain.user.models.entity.UserEntity;
 import com.clicker.core.domain.wallets.models.dto.FullWalletResponseDto;
 import com.clicker.core.domain.wallets.models.dto.WalletCreateDto;
 import com.clicker.core.domain.wallets.models.dto.WalletResponseDto;
 import com.clicker.core.domain.wallets.models.dto.WalletUpdateDto;
-import com.clicker.core.domain.wallets.validation.validator.WalletValidator;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
+import com.clicker.core.exception.not_found.WalletNotFoundException;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Validator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Set;
 import java.util.UUID;
@@ -24,41 +22,44 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class WalletFacadeImpl implements WalletFacade {
 
-    private final UserService userService;
     private final WalletsService walletsService;
-    private final WalletValidator walletValidator;
     private final Validator validator;
-    @PersistenceContext
-    private final EntityManager entityManager;
+    private final UserService userService;
 
     @Override
     public WalletResponseDto save(UUID userId, WalletCreateDto walletCreateDto) {
-        UserEntity entity = entityManager.getReference(UserEntity.class, userId);
+        UserEntity entity = userService.getReferenceById(userId);
         return walletsService.save(entity, walletCreateDto);
     }
 
+    @Transactional
     @Override
     public void setMainWallet(UUID userId, Long id, HttpServletResponse response) {
-        UserResponseDto dto = userService.findWithWalletsById(userId);
-        walletValidator.validateWalletOwnership(dto, id);
+        if (walletsService.existsByUserIdAndId(userService.getReferenceById(userId), id)) {
+            throw new WalletNotFoundException();
+        }
         walletsService.setMainWallet(id, response);
     }
 
+    @Transactional
     @Override
     public WalletResponseDto update(UUID userId, WalletUpdateDto dto) {
         Set<ConstraintViolation<WalletUpdateDto>> errors = validator.validate(dto);
         if (!errors.isEmpty()) {
             throw new ConstraintViolationException(errors);
         }
-        UserResponseDto userResponseDto = userService.findWithWalletsById(userId);
-        walletValidator.validateWalletOwnership(userResponseDto, dto.getId());
+        if (walletsService.existsByUserIdAndId(userService.getReferenceById(userId), dto.getId())) {
+            throw new WalletNotFoundException();
+        }
         return walletsService.update(dto);
     }
 
+    @Transactional
     @Override
-    public void deleteByUserIdNId(UUID userId, Long id) {
-        UserResponseDto dto = userService.findWithWalletsById(userId);
-        walletValidator.validateWalletOwnership(dto, id);
+    public void deleteByUserIdAndId(UUID userId, Long id) {
+        if (walletsService.existsByUserIdAndId(userService.getReferenceById(userId), id)) {
+            throw new WalletNotFoundException();
+        }
         walletsService.delete(id);
     }
 

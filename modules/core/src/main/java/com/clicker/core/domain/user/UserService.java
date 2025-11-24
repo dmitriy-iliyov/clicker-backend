@@ -17,6 +17,8 @@ public interface UserService extends UserDetailsService {
 
     void save(ConfirmedUserDto confirmedUserDto);
 
+    UserEntity getReferenceById(UUID id);
+
     boolean existsById(UUID id);
 
     boolean existsByEmail(String email);
@@ -46,5 +48,4 @@ public interface UserService extends UserDetailsService {
     void deleteById(UUID id);
 
     void deleteByPassword(UUID id, String password) throws BadCredentialsException, IncorrectPassword;
-
 }

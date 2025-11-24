@@ -63,7 +63,7 @@ public class WalletController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@AuthenticationPrincipal TokenUserDetails tokenUserDetails,
                                     @PathVariable("id") @Positive(message = "Wallet id should be positive!") Long id) {
-        facade.deleteByUserIdNId(tokenUserDetails.getUserId(), id);
+        facade.deleteByUserIdAndId(tokenUserDetails.getUserId(), id);
         return ResponseEntity
                 .status(HttpStatus.NO_CONTENT)
                 .build();

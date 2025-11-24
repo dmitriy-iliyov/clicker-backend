@@ -1,5 +1,6 @@
 package com.clicker.core.domain.wallets;
 
+import com.clicker.core.domain.currency.CurrencyService;
 import com.clicker.core.domain.currency.models.CurrencyEntity;
 import com.clicker.core.domain.user.models.entity.UserEntity;
 import com.clicker.core.domain.wallets.mapper.WalletMapper;
@@ -12,10 +13,7 @@ import com.clicker.core.domain.wallets.models.wallet_token.WalletToken;
 import com.clicker.core.domain.wallets.models.wallet_token.factory.WalletTokenFactory;
 import com.clicker.core.domain.wallets.models.wallet_token.serializing.WalletTokenSerializer;
 import com.clicker.core.exception.ExceptionUtils;
-import com.clicker.core.exception.not_found.CurrencyNotFoundByIdException;
 import com.clicker.core.exception.not_found.WalletNotFoundException;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +22,6 @@ import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
@@ -39,14 +36,13 @@ public class WalletsServiceImpl implements WalletsService {
     private final WalletMapper mapper;
     private final WalletTokenFactory tokenFactory;
     private final WalletTokenSerializer tokenSerializer;
-    @PersistenceContext
-    private final EntityManager entityManager;
+    private final CurrencyService currencyService;
 
     @Transactional
     @Override
     public WalletResponseDto save(UserEntity entity, WalletCreateDto dto) {
         try {
-            CurrencyEntity currency = entityManager.getReference(CurrencyEntity.class, dto.currencyId());
+            CurrencyEntity currency = currencyService.getReferenceById(dto.getCurrencyId());
             WalletEntity wallet = mapper.toEntity(dto);
             wallet.setCurrency(currency);
             wallet.setUser(entity);
@@ -59,8 +55,14 @@ public class WalletsServiceImpl implements WalletsService {
 
     @Transactional(readOnly = true)
     @Override
-    public boolean existedById(Long id) {
+    public boolean existsById(Long id) {
         return repository.existsById(id);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public boolean existsByUserIdAndId(UserEntity user, Long id) {
+        return repository.existsByUserAndId(user, id);
     }
 
     @Transactional(readOnly = true)
@@ -84,7 +86,7 @@ public class WalletsServiceImpl implements WalletsService {
 
     @Transactional(readOnly = true)
     @Override
-    public List<FullWalletResponseDto> findAllFullByAddress(String address) {
+    public Set<FullWalletResponseDto> findAllFullByAddress(String address) {
         return repository.findAllFullByAddress(address);
     }
 
@@ -111,7 +113,7 @@ public class WalletsServiceImpl implements WalletsService {
             WalletEntity entity = repository.findWithCurrencyById(dto.getId()).orElseThrow(
                     WalletNotFoundException::new
             );
-            mapper.updateEntityFromDto(dto, entity, entityManager.getReference(CurrencyEntity.class, dto.getCurrencyId()));
+            mapper.updateEntityFromDto(dto, entity, currencyService.getReferenceById(dto.getCurrencyId()));
             return mapper.toResponseDto(repository.save(entity));
         } catch(ConstraintViolationException e) {
             log.error("Error when updating wallet, id={}", dto.getId(), e);
@@ -123,7 +125,7 @@ public class WalletsServiceImpl implements WalletsService {
     public void updateBatch(Map<Long, WalletUpdateDto> dtos, Set<WalletEntity> entities) {
         for (WalletEntity wallet: entities) {
             WalletUpdateDto dto = dtos.get(wallet.getId());
-            mapper.updateEntityFromDto(dto, wallet, entityManager.getReference(CurrencyEntity.class, dto.getCurrencyId()));
+            mapper.updateEntityFromDto(dto, wallet, currencyService.getReferenceById(dto.getCurrencyId()));
         }
     }
 

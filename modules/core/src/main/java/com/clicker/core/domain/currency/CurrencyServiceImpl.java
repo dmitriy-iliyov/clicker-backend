@@ -22,6 +22,11 @@ public class CurrencyServiceImpl implements CurrencyService {
     private final CurrencyMapper mapper;
     private final FullCurrencyMapper fullMapper;
 
+    @Override
+    public CurrencyEntity getReferenceById(Long id) {
+        return repository.getReferenceById(id);
+    }
+
     @Transactional(readOnly = true)
     @Override
     public boolean existedById(Long id) {

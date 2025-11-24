@@ -7,9 +7,7 @@ import com.clicker.core.domain.wallets.models.dto.WalletCreateDto;
 import com.clicker.core.domain.wallets.models.dto.WalletResponseDto;
 import com.clicker.core.domain.wallets.models.dto.WalletUpdateDto;
 import jakarta.servlet.http.HttpServletResponse;
-import org.hibernate.exception.ConstraintViolationException;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
@@ -18,7 +16,9 @@ public interface WalletsService {
 
     WalletResponseDto save(UserEntity userEntity, WalletCreateDto walletCreateDto);
 
-    boolean existedById(Long id);
+    boolean existsById(Long id);
+
+    boolean existsByUserIdAndId(UserEntity user, Long id);
 
     WalletResponseDto findWithCurrencyById(Long id);
 
@@ -26,7 +26,7 @@ public interface WalletsService {
 
     Set<WalletResponseDto> findAllWithCurrencyByUserId(UUID userId);
 
-    List<FullWalletResponseDto> findAllFullByAddress(String address);
+    Set<FullWalletResponseDto> findAllFullByAddress(String address);
 
     void setMainWallet(Long id, HttpServletResponse response);
 
@@ -35,5 +35,4 @@ public interface WalletsService {
     void updateBatch(Map<Long, WalletUpdateDto> dtos, Set<WalletEntity> entities);
     
     void delete(Long id);
-
 }

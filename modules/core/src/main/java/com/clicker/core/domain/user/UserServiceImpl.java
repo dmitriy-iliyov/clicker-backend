@@ -75,6 +75,11 @@ public class UserServiceImpl implements UserService {
         repository.save(entity);
     }
 
+    @Override
+    public UserEntity getReferenceById(UUID id) {
+        return repository.getReferenceById(id);
+    }
+
     @Transactional(readOnly = true)
     @Override
     public boolean existsById(UUID id) {
