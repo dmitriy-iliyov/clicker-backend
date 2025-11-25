@@ -1,4 +1,4 @@
-package com.clicker.core.domain.wallets.validation.address;
+package com.clicker.core.domain.wallets.validation.address.annotation;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
@@ -8,7 +8,7 @@ import java.lang.annotation.*;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = {CreateDtoAddressValidator.class, UpdateDtoAddressValidator.class})
+@Constraint(validatedBy = WalletAddressConstraintValidator.class)
 @Documented
 public @interface WalletAddress {
     String message() default "";

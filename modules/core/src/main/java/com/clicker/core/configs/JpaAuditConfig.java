@@ -1,7 +1,7 @@
 package com.clicker.core.configs;
 
 import com.clicker.core.domain.user.models.entity.UserEntity;
-import com.clicker.core.sgared.SecurityAuditorAware;
+import com.clicker.core.shared.SecurityAuditorAware;
 import jakarta.persistence.EntityManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

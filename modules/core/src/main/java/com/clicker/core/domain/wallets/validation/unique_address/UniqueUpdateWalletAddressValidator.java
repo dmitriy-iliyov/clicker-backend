@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -18,7 +19,7 @@ public class UniqueUpdateWalletAddressValidator implements ConstraintValidator<U
 
     @Override
     public boolean isValid(WalletUpdateDto walletUpdateDto, ConstraintValidatorContext constraintValidatorContext) {
-        List<FullWalletResponseDto> fullWalletResponseDtos = walletsService.findAllFullByAddress(walletUpdateDto.getAddress());
+        Set<FullWalletResponseDto> fullWalletResponseDtos = walletsService.findAllFullByAddress(walletUpdateDto.getAddress());
         Map<Long, List<FullWalletResponseDto>> currencyIds = fullWalletResponseDtos.stream()
                 .collect(Collectors.groupingBy(FullWalletResponseDto::currencyId));
         if (currencyIds.containsKey(walletUpdateDto.getCurrencyId())) {

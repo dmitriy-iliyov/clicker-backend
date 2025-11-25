@@ -8,6 +8,7 @@ import jakarta.validation.ConstraintValidatorContext;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
+import java.util.Set;
 
 @RequiredArgsConstructor
 public class UniqueCreateWalletAddressValidator implements ConstraintValidator<UniqueWalletAddress, WalletCreateDto> {
@@ -15,13 +16,13 @@ public class UniqueCreateWalletAddressValidator implements ConstraintValidator<U
     private final WalletsService walletsService;
     
     @Override
-    public boolean isValid(WalletCreateDto walletCreateDto, ConstraintValidatorContext constraintValidatorContext) {
-        List<FullWalletResponseDto> walletsWithSameAddress = walletsService.findAllFullByAddress(walletCreateDto.address());
+    public boolean isValid(WalletCreateDto dto, ConstraintValidatorContext context) {
+        Set<FullWalletResponseDto> walletsWithSameAddress = walletsService.findAllFullByAddress(dto.getAddress());
         List<Long> walletCurrencyIds = walletsWithSameAddress.stream()
                 .map(FullWalletResponseDto::currencyId)
                 .toList();
-        if (walletCurrencyIds.contains(walletCreateDto.currencyId())) {
-            constraintValidatorContext.buildConstraintViolationWithTemplate("This address is already in use!")
+        if (walletCurrencyIds.contains(dto.getCurrencyId())) {
+            context.buildConstraintViolationWithTemplate("This address is already in use!")
                     .addPropertyNode("address")
                     .addConstraintViolation();
             return false;

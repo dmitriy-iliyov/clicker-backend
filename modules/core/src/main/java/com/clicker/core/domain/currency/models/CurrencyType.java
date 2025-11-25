@@ -4,10 +4,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum CurrencyType {
 
-    BTC("BTC"),
-    ETH("ETH"),
-    BNB("BNB"),
-    SOL("SOL");
+    SOLANA("SOL"),
+    APTOS("APT"),
+    SUI("SUI"),
+    POLYGON("PoS"),
+    WAX("WAXP");
 
     private final String code;
 

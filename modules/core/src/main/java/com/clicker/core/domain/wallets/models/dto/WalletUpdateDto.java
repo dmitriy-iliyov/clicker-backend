@@ -1,28 +1,26 @@
 package com.clicker.core.domain.wallets.models.dto;
 
-import com.clicker.core.domain.currency.validation.id.CurrencyId;
-import com.clicker.core.domain.wallets.validation.address.WalletAddress;
+import com.clicker.core.domain.wallets.validation.address.annotation.WalletAddress;
 import com.clicker.core.domain.wallets.validation.unique_address.UniqueWalletAddress;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.Size;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 @WalletAddress
 @UniqueWalletAddress
-@Data
-public class WalletUpdateDto {
+@Getter
+@Setter
+@EqualsAndHashCode(callSuper = true)
+public class WalletUpdateDto extends BaseWalletDto {
+
         @NotNull(message = "Wallet id shouldn't be blank!")
         @Positive(message = "Wallet id shouldn't be negative!")
-        private Long id;
+        protected Long id;
 
-        @NotNull(message = "Currency id shouldn't be blank!")
-        @CurrencyId
-        private Long currencyId;
-
-        @NotBlank(message = "Address shouldn't be blank!")
-        @Size(max = 100, message = "Wallet length must be less than 100!")
-        private String address;
+        public WalletUpdateDto(Long id, Long currencyId, String address) {
+                super(currencyId, address);
+                this.id = id;
+        }
 }
