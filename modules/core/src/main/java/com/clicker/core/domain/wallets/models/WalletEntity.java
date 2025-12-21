@@ -16,7 +16,7 @@ import java.util.Objects;
 @ToString(exclude = "user")
 @NoArgsConstructor
 @AllArgsConstructor
-public class WalletEntity extends InteractorAuditEntity<UserEntity> {
+public class WalletEntity extends InteractorAuditEntity {
 
     @Id
     @SequenceGenerator(sequenceName = "wallets_seq", name = "wallets_seq", allocationSize = 20)

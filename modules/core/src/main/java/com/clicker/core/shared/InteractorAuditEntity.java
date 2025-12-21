@@ -1,5 +1,6 @@
 package com.clicker.core.shared;
 
+import com.clicker.core.domain.user.models.entity.UserEntity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -13,15 +14,15 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(exclude = {"creator", "updater"})
-public abstract class InteractorAuditEntity<I> extends BaseAuditEntity {
+public abstract class InteractorAuditEntity extends BaseAuditEntity {
 
     @CreatedBy
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "creator_id", nullable = false, updatable = false)
-    protected I creator;
+    protected UserEntity creator;
 
     @LastModifiedBy
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "updater_id", nullable = false)
-    protected I updater;
+    protected UserEntity updater;
 }
