@@ -1,7 +1,8 @@
 version: "3.8"
-name: clicker-core-backend-infrastructure
+name: clicker-backend-infrastructure
 services:
-    postgresql:
+
+    core-postgresql:
       image: postgres:16.1-alpine3.19
       networks:
         - default
@@ -18,3 +19,14 @@ services:
         - default
       ports:
         - "6379:6379"
+
+    clicker-postgresql:
+      image: postgres:16.1-alpine3.19
+      networks:
+        - default
+      environment:
+        POSTGRES_PASSWORD: root
+        POSTGRES_USER: admin
+        POSTGRES_DB: database
+      ports:
+        - "5433:5432"
