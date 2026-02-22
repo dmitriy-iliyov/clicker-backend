@@ -1,0 +1,1515 @@
+{
+  "info": {
+    "_postman_id": "de153a3d-e898-471f-9287-d5d1d16b9fe3",
+    "name": "clicker",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "31061267"
+  },
+  "item": [
+    {
+      "name": "csrf",
+      "item": [
+        {
+          "name": "/csrf",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{PROTOCOL}}://{{DST_HOST}}/csrf",
+              "protocol": "{{PROTOCOL}}",
+              "host": [
+                "{{DST_HOST}}"
+              ],
+              "path": [
+                "csrf"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "/csrf",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{PROTOCOL}}://{{DST_HOST}}/csrf",
+                  "protocol": "{{PROTOCOL}}",
+                  "host": [
+                    "{{DST_HOST}}"
+                  ],
+                  "path": [
+                    "csrf"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000 ; includeSubDomains"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "script-src 'self'"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 26 Jan 2025 21:53:24 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"token\": \"p1DV784LvIIhN_vpXXLEiL5T1asv0R537a2On2pIlzj_5FvPkGDj36w4juMMA8reOF_wuds2-Mkf5Cxaj562qlJx8wme1Gr4\",\n    \"parameterName\": \"_csrf\",\n    \"headerName\": \"X-XSRF-TOKEN\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "user",
+      "item": [
+        {
+          "name": "user wallets",
+          "item": [
+            {
+              "name": "/users/user/wallets",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"currency\": \"BTC\",\n    \"key\": \"33CkSPoRNYuRvzb57wNU5LaEHFAUbHzvbC\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{PROTOCOL}}://{{DST_HOST}}/users/user/wallets",
+                  "protocol": "{{PROTOCOL}}",
+                  "host": [
+                    "{{DST_HOST}}"
+                  ],
+                  "path": [
+                    "users",
+                    "user",
+                    "wallets"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/users/user/wallets/{id}",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"id\": 3,\n    \"currencyId\": 2,\n    \"address\": \"masad\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{PROTOCOL}}://{{DST_HOST}}/users/user/wallets",
+                  "protocol": "{{PROTOCOL}}",
+                  "host": [
+                    "{{DST_HOST}}"
+                  ],
+                  "path": [
+                    "users",
+                    "user",
+                    "wallets"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/users/user/wallets/{id}",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{PROTOCOL}}://{{DST_HOST}}/users/3/wallets/1",
+                  "protocol": "{{PROTOCOL}}",
+                  "host": [
+                    "{{DST_HOST}}"
+                  ],
+                  "path": [
+                    "users",
+                    "3",
+                    "wallets",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/users/user/wallets/{id}/main",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{PROTOCOL}}://{{DST_HOST}}/users/user/wallets/2/main",
+                  "protocol": "{{PROTOCOL}}",
+                  "host": [
+                    "{{DST_HOST}}"
+                  ],
+                  "path": [
+                    "users",
+                    "user",
+                    "wallets",
+                    "2",
+                    "main"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "/users/user",
+          "protocolProfileBehavior": {
+            "disabledSystemHeaders": {}
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{PROTOCOL}}://{{DST_HOST}}/users/user",
+              "protocol": "{{PROTOCOL}}",
+              "host": [
+                "{{DST_HOST}}"
+              ],
+              "path": [
+                "users",
+                "user"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/users/user",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "X-XSRF-TOKEN",
+                "value": "qFfmFLMagujEls2ewd-jnVannT77tmJ2MKstvakig_JqsvAykGfVIYEr4Izp9a6q9vKX_2-XsFyZgQNbVMkb35tA5ctY08IB",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"nedmitriy.iliyov@gmail.com\",\n    \"password\": \"evilpassword23\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{PROTOCOL}}://{{DST_HOST}}/users/user",
+              "protocol": "{{PROTOCOL}}",
+              "host": [
+                "{{DST_HOST}}"
+              ],
+              "path": [
+                "users",
+                "user"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/users/user/{password}",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "X-XSRF-TOKEN",
+                "value": "{{X-XSRF-TOKEN}}",
+                "type": "text",
+                "disabled": true
+              },
+              {
+                "key": "X-XSRF-TOKEN",
+                "value": "vFCix3cNib-x6wHYnuMn3XxurFeJm4rlK8942D7IHNzc0mqEhGCR8kU869uciGLsqc4Tv0VegTXrrOvIT61OugyqeuXus1i3",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{PROTOCOL}}://{{DST_HOST}}/users/user/{{password}}",
+              "protocol": "{{PROTOCOL}}",
+              "host": [
+                "{{DST_HOST}}"
+              ],
+              "path": [
+                "users",
+                "user",
+                "{{password}}"
+              ],
+              "query": [
+                {
+                  "key": "",
+                  "value": null,
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "admin",
+      "item": [
+        {
+          "name": "currency",
+          "item": [
+            {
+              "name": "/currencies",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"code\": \"BTC2\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{PROTOCOL}}://{{DST_HOST}}/currencies",
+                  "protocol": "{{PROTOCOL}}",
+                  "host": [
+                    "{{DST_HOST}}"
+                  ],
+                  "path": [
+                    "currencies"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "/currencies",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"code\": \"BTC2\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{PROTOCOL}}://{{DST_HOST}}/currencies",
+                      "protocol": "{{PROTOCOL}}",
+                      "host": [
+                        "{{DST_HOST}}"
+                      ],
+                      "path": [
+                        "currencies"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "plain",
+                  "header": [
+                    {
+                      "key": "Vary",
+                      "value": "Origin"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Access-Control-Request-Method"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                      "key": "X-Content-Type-Options",
+                      "value": "nosniff"
+                    },
+                    {
+                      "key": "X-XSS-Protection",
+                      "value": "1; mode=block"
+                    },
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                      "key": "Pragma",
+                      "value": "no-cache"
+                    },
+                    {
+                      "key": "Expires",
+                      "value": "0"
+                    },
+                    {
+                      "key": "Strict-Transport-Security",
+                      "value": "max-age=31536000 ; includeSubDomains"
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "DENY"
+                    },
+                    {
+                      "key": "Content-Security-Policy",
+                      "value": "script-src 'self'"
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "0"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Sat, 01 Feb 2025 01:41:09 GMT"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=60"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": null
+                }
+              ]
+            },
+            {
+              "name": "/currencies/{id}",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{PROTOCOL}}://{{DST_HOST}}/currencies/1",
+                  "protocol": "{{PROTOCOL}}",
+                  "host": [
+                    "{{DST_HOST}}"
+                  ],
+                  "path": [
+                    "currencies",
+                    "1"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "/currencies/{id}",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{PROTOCOL}}://{{DST_HOST}}/currencies/1",
+                      "protocol": "{{PROTOCOL}}",
+                      "host": [
+                        "{{DST_HOST}}"
+                      ],
+                      "path": [
+                        "currencies",
+                        "1"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Vary",
+                      "value": "Origin"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Access-Control-Request-Method"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                      "key": "X-Content-Type-Options",
+                      "value": "nosniff"
+                    },
+                    {
+                      "key": "X-XSS-Protection",
+                      "value": "1; mode=block"
+                    },
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                      "key": "Pragma",
+                      "value": "no-cache"
+                    },
+                    {
+                      "key": "Expires",
+                      "value": "0"
+                    },
+                    {
+                      "key": "Strict-Transport-Security",
+                      "value": "max-age=31536000 ; includeSubDomains"
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "DENY"
+                    },
+                    {
+                      "key": "Content-Security-Policy",
+                      "value": "script-src 'self'"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Sat, 01 Feb 2025 01:41:20 GMT"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=60"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"id\": 1,\n    \"code\": \"BTC\"\n}"
+                }
+              ]
+            },
+            {
+              "name": "/currencies",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"id\": \"2\",\n    \"code\": \"BTC2\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{PROTOCOL}}://{{DST_HOST}}/currencies?password={{password}}",
+                  "protocol": "{{PROTOCOL}}",
+                  "host": [
+                    "{{DST_HOST}}"
+                  ],
+                  "path": [
+                    "currencies"
+                  ],
+                  "query": [
+                    {
+                      "key": "password",
+                      "value": "t",
+                      "disabled": true
+                    },
+                    {
+                      "key": "password",
+                      "value": "{{password}}",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "/currencies",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"id\": \"2\",\n    \"code\": \"BTC221\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{PROTOCOL}}://{{DST_HOST}}/currencies?password=t",
+                      "protocol": "{{PROTOCOL}}",
+                      "host": [
+                        "{{DST_HOST}}"
+                      ],
+                      "path": [
+                        "currencies"
+                      ],
+                      "query": [
+                        {
+                          "key": "password",
+                          "value": "t"
+                        },
+                        {
+                          "key": "password",
+                          "value": "{{password}}",
+                          "disabled": true
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "plain",
+                  "header": [
+                    {
+                      "key": "Vary",
+                      "value": "Origin"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Access-Control-Request-Method"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                      "key": "X-Content-Type-Options",
+                      "value": "nosniff"
+                    },
+                    {
+                      "key": "X-XSS-Protection",
+                      "value": "1; mode=block"
+                    },
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                      "key": "Pragma",
+                      "value": "no-cache"
+                    },
+                    {
+                      "key": "Expires",
+                      "value": "0"
+                    },
+                    {
+                      "key": "Strict-Transport-Security",
+                      "value": "max-age=31536000 ; includeSubDomains"
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "DENY"
+                    },
+                    {
+                      "key": "Content-Security-Policy",
+                      "value": "script-src 'self'"
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "0"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Sat, 01 Feb 2025 02:22:36 GMT"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=60"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": null
+                },
+                {
+                  "name": "/currencies",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"id\": \"4\",\n    \"code\": \"BTC221\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{PROTOCOL}}://{{DST_HOST}}/currencies?password=t",
+                      "protocol": "{{PROTOCOL}}",
+                      "host": [
+                        "{{DST_HOST}}"
+                      ],
+                      "path": [
+                        "currencies"
+                      ],
+                      "query": [
+                        {
+                          "key": "password",
+                          "value": "t"
+                        },
+                        {
+                          "key": "password",
+                          "value": "{{password}}",
+                          "disabled": true
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Vary",
+                      "value": "Origin"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Access-Control-Request-Method"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                      "key": "X-Content-Type-Options",
+                      "value": "nosniff"
+                    },
+                    {
+                      "key": "X-XSS-Protection",
+                      "value": "1; mode=block"
+                    },
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                      "key": "Pragma",
+                      "value": "no-cache"
+                    },
+                    {
+                      "key": "Expires",
+                      "value": "0"
+                    },
+                    {
+                      "key": "Strict-Transport-Security",
+                      "value": "max-age=31536000 ; includeSubDomains"
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "DENY"
+                    },
+                    {
+                      "key": "Content-Security-Policy",
+                      "value": "script-src 'self'"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/problem+json"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Sat, 01 Feb 2025 02:23:21 GMT"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "close"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"type\": \"about:blank\",\n    \"title\": \"Bad Request\",\n    \"status\": 400,\n    \"detail\": \"error.400\",\n    \"instance\": \"/currencies\",\n    \"errors\": {\n        \"currencyUpdateDto\": \"Invalid currency id or this currency already exist!\"\n    }\n}"
+                }
+              ]
+            },
+            {
+              "name": "/currencies",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{PROTOCOL}}://{{DST_HOST}}/currencies",
+                  "protocol": "{{PROTOCOL}}",
+                  "host": [
+                    "{{DST_HOST}}"
+                  ],
+                  "path": [
+                    "currencies"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/currencies/{id}",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{PROTOCOL}}://{{DST_HOST}}/currencies/1?password={{password}}",
+                  "protocol": "{{PROTOCOL}}",
+                  "host": [
+                    "{{DST_HOST}}"
+                  ],
+                  "path": [
+                    "currencies",
+                    "1"
+                  ],
+                  "query": [
+                    {
+                      "key": "password",
+                      "value": "w",
+                      "disabled": true
+                    },
+                    {
+                      "key": "password",
+                      "value": "{{password}}",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "New Request",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{PROTOCOL}}://{{DST_HOST}}/currencies/1?password=w",
+                      "protocol": "{{PROTOCOL}}",
+                      "host": [
+                        "{{DST_HOST}}"
+                      ],
+                      "path": [
+                        "currencies",
+                        "1"
+                      ],
+                      "query": [
+                        {
+                          "key": "password",
+                          "value": "w"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "plain",
+                  "header": [
+                    {
+                      "key": "Vary",
+                      "value": "Origin"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Access-Control-Request-Method"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                      "key": "X-Content-Type-Options",
+                      "value": "nosniff"
+                    },
+                    {
+                      "key": "X-XSS-Protection",
+                      "value": "1; mode=block"
+                    },
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                      "key": "Pragma",
+                      "value": "no-cache"
+                    },
+                    {
+                      "key": "Expires",
+                      "value": "0"
+                    },
+                    {
+                      "key": "Strict-Transport-Security",
+                      "value": "max-age=31536000 ; includeSubDomains"
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "DENY"
+                    },
+                    {
+                      "key": "Content-Security-Policy",
+                      "value": "script-src 'self'"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Sat, 01 Feb 2025 02:25:40 GMT"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=60"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "wallets",
+          "item": [
+            {
+              "name": "/users/{userId}/wallets",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"currency\": \"BTC\",\n    \"key\": \"33CkSPoRNYuRvzb57wNU5LaEHFAUbHzvbC\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{PROTOCOL}}://{{DST_HOST}}//users/3/wallets",
+                  "protocol": "{{PROTOCOL}}",
+                  "host": [
+                    "{{DST_HOST}}"
+                  ],
+                  "path": [
+                    "",
+                    "users",
+                    "3",
+                    "wallets"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/users/{userId}/wallets/{id}",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"id\": \"2\",\n    \"currencyId\": \"3\",\n    \"address\": \"102489104urh9284ht941h\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{PROTOCOL}}://{{DST_HOST}}/users/1/wallets",
+                  "protocol": "{{PROTOCOL}}",
+                  "host": [
+                    "{{DST_HOST}}"
+                  ],
+                  "path": [
+                    "users",
+                    "1",
+                    "wallets"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/users/{userId}/wallets/{id}",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{PROTOCOL}}://{{DST_HOST}}/users/3/wallets/1",
+                  "protocol": "{{PROTOCOL}}",
+                  "host": [
+                    "{{DST_HOST}}"
+                  ],
+                  "path": [
+                    "users",
+                    "3",
+                    "wallets",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/users/{userId}/wallets/{id}",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{PROTOCOL}}://{{DST_HOST}}/wallets/1",
+                  "protocol": "{{PROTOCOL}}",
+                  "host": [
+                    "{{DST_HOST}}"
+                  ],
+                  "path": [
+                    "wallets",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "/users/{id}",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{PROTOCOL}}://{{DST_HOST}}/users/2",
+              "protocol": "{{PROTOCOL}}",
+              "host": [
+                "{{DST_HOST}}"
+              ],
+              "path": [
+                "users",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/users/{id}",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "X-XSRF-TOKEN",
+                "value": "6gVIcP0gEuv4SmCwxTi0V72beZzr3PWcdmJDzIfF1mQFvD9bizQuSJlBdo3VcgTWoRWAYov-VP3bvcGxT1F2qrShswIx3l5u",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"dmitriy1.iliyov@gmail.com\",\n    \"password\": \"evilpassword\"\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{PROTOCOL}}://{{DST_HOST}}/users/3",
+              "protocol": "{{PROTOCOL}}",
+              "host": [
+                "{{DST_HOST}}"
+              ],
+              "path": [
+                "users",
+                "3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/users/{id}",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{PROTOCOL}}://{{DST_HOST}}/users/3",
+              "protocol": "{{PROTOCOL}}",
+              "host": [
+                "{{DST_HOST}}"
+              ],
+              "path": [
+                "users",
+                "3"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "confirmation",
+      "item": [
+        {
+          "name": "/confirm/email",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{PROTOCOL}}://{{DST_HOST}}/confirm/email?token=M2I4OWVkYWUtMDZkNi00YmRhLWI4YTctMmE0NmZhZmFiZDE0",
+              "protocol": "{{PROTOCOL}}",
+              "host": [
+                "{{DST_HOST}}"
+              ],
+              "path": [
+                "confirm",
+                "email"
+              ],
+              "query": [
+                {
+                  "key": "token",
+                  "value": "M2I4OWVkYWUtMDZkNi00YmRhLWI4YTctMmE0NmZhZmFiZDE0"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/confirm/request",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{PROTOCOL}}://{{DST_HOST}}/confirm/request?resource=dmitriy.iliyov@gmail.com",
+              "protocol": "{{PROTOCOL}}",
+              "host": [
+                "{{DST_HOST}}"
+              ],
+              "path": [
+                "confirm",
+                "request"
+              ],
+              "query": [
+                {
+                  "key": "resource",
+                  "value": "dmitriy.iliyov@gmail.com"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "pass-recovery",
+      "item": [
+        {
+          "name": "/password-recovery/request",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{PROTOCOL}}://{{DST_HOST}}/password-recovery/request?resource=dmitriy.iliyov@gmail.com",
+              "protocol": "{{PROTOCOL}}",
+              "host": [
+                "{{DST_HOST}}"
+              ],
+              "path": [
+                "password-recovery",
+                "request"
+              ],
+              "query": [
+                {
+                  "key": "resource",
+                  "value": "dmitriy.iliyov@gmail.com"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/password-recovery/recover",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"password\": \"new_password\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{PROTOCOL}}://{{DST_HOST}}/password-recovery/recover?token",
+              "protocol": "{{PROTOCOL}}",
+              "host": [
+                "{{DST_HOST}}"
+              ],
+              "path": [
+                "password-recovery",
+                "recover"
+              ],
+              "query": [
+                {
+                  "key": "token",
+                  "value": null,
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "auth",
+      "item": [
+        {
+          "name": "/logout",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{PROTOCOL}}://{{DST_HOST}}/logout",
+              "protocol": "{{PROTOCOL}}",
+              "host": [
+                "{{DST_HOST}}"
+              ],
+              "path": [
+                "logout"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{PROTOCOL}}://{{DST_HOST}}/login?email=admin@gmail.com&password=adminPassword",
+              "protocol": "{{PROTOCOL}}",
+              "host": [
+                "{{DST_HOST}}"
+              ],
+              "path": [
+                "login"
+              ],
+              "query": [
+                {
+                  "key": "email",
+                  "value": "{{email}}",
+                  "disabled": true
+                },
+                {
+                  "key": "password",
+                  "value": "{{password}}",
+                  "disabled": true
+                },
+                {
+                  "key": "email",
+                  "value": "eliv@gmail.com",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "password",
+                  "value": "evilpassword",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "email",
+                  "value": "dmitriy.iliyov@gmail.com",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "password",
+                  "value": "evilpassword",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "email",
+                  "value": "admin@gmail.com",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "adminPassword",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "test",
+      "item": [
+        {
+          "name": "test_error",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{PROTOCOL}}://{{DST_HOST}}/test-error/true",
+              "protocol": "{{PROTOCOL}}",
+              "host": [
+                "{{DST_HOST}}"
+              ],
+              "path": [
+                "test-error",
+                "true"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "fullWalletDto by addres",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{PROTOCOL}}://{{DST_HOST}}/test/test-FullWalletDto/indigo",
+              "protocol": "{{PROTOCOL}}",
+              "host": [
+                "{{DST_HOST}}"
+              ],
+              "path": [
+                "test",
+                "test-FullWalletDto",
+                "indigo"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/test-FullWalletDtoById/{id}",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{PROTOCOL}}://{{DST_HOST}}/test/test-FullWalletDtoById/1",
+              "protocol": "{{PROTOCOL}}",
+              "host": [
+                "{{DST_HOST}}"
+              ],
+              "path": [
+                "test",
+                "test-FullWalletDtoById",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "public",
+      "item": [
+        {
+          "name": "/users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{PROTOCOL}}://{{DST_HOST}}/users",
+              "protocol": "{{PROTOCOL}}",
+              "host": [
+                "{{DST_HOST}}"
+              ],
+              "path": [
+                "users"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/users",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"dmitriy.iliyov@gmail.com\",\n    \"password\": \"evilpassword\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{PROTOCOL}}://{{DST_HOST}}/users",
+              "protocol": "{{PROTOCOL}}",
+              "host": [
+                "{{DST_HOST}}"
+              ],
+              "path": [
+                "users"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "/users-test",
+      "item": [
+        {
+          "name": "test-all-users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{PROTOCOL}}://{{DST_HOST}}/users/random",
+              "protocol": "{{PROTOCOL}}",
+              "host": [
+                "{{DST_HOST}}"
+              ],
+              "path": [
+                "users",
+                "random"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "PROTOCOL",
+      "value": "https",
+      "type": "string"
+    },
+    {
+      "key": "DST_HOST",
+      "value": "localhost:8443",
+      "type": "string"
+    }
+  ]
+}
